@@ -25,6 +25,7 @@ namespace Ninject.Parameters
 {
     using System;
 
+    using JetBrains.Annotations;
     using Ninject.Activation;
     using Ninject.Planning.Targets;
 
@@ -38,7 +39,7 @@ namespace Ninject.Parameters
         /// </summary>
         /// <param name="name">The name of the argument to override.</param>
         /// <param name="value">The value to inject into the property.</param>
-        public ConstructorArgument(string name, object value)
+        public ConstructorArgument([NotNull] string name, [CanBeNull] object value)
             : base(name, value, false)
         {
         }
@@ -48,7 +49,7 @@ namespace Ninject.Parameters
         /// </summary>
         /// <param name="name">The name of the argument to override.</param>
         /// <param name="valueCallback">The callback to invoke to get the value that should be injected.</param>
-        public ConstructorArgument(string name, Func<IContext, object> valueCallback)
+        public ConstructorArgument([NotNull] string name, [NotNull] Func<IContext, object> valueCallback)
             : base(name, valueCallback, false)
         {
         }
@@ -58,7 +59,7 @@ namespace Ninject.Parameters
         /// </summary>
         /// <param name="name">The name of the argument to override.</param>
         /// <param name="valueCallback">The callback to invoke to get the value that should be injected.</param>
-        public ConstructorArgument(string name, Func<IContext, ITarget, object> valueCallback)
+        public ConstructorArgument([NotNull] string name, [NotNull] Func<IContext, ITarget, object> valueCallback)
             : base(name, valueCallback, false)
         {
         }
@@ -69,7 +70,7 @@ namespace Ninject.Parameters
         /// <param name="name">The name of the argument to override.</param>
         /// <param name="value">The value to inject into the property.</param>
         /// <param name="shouldInherit">Whether the parameter should be inherited into child requests.</param>
-        public ConstructorArgument(string name, object value, bool shouldInherit)
+        public ConstructorArgument([NotNull] string name, [CanBeNull] object value, bool shouldInherit)
             : base(name, value, shouldInherit)
         {
         }
@@ -80,7 +81,7 @@ namespace Ninject.Parameters
         /// <param name="name">The name of the argument to override.</param>
         /// <param name="valueCallback">The callback to invoke to get the value that should be injected.</param>
         /// <param name="shouldInherit">if set to <c>true</c> [should inherit].</param>
-        public ConstructorArgument(string name, Func<IContext, object> valueCallback, bool shouldInherit)
+        public ConstructorArgument([NotNull] string name, [NotNull] Func<IContext, object> valueCallback, bool shouldInherit)
             : base(name, valueCallback, shouldInherit)
         {
         }
@@ -91,7 +92,7 @@ namespace Ninject.Parameters
         /// <param name="name">The name of the argument to override.</param>
         /// <param name="valueCallback">The callback to invoke to get the value that should be injected.</param>
         /// <param name="shouldInherit">if set to <c>true</c> [should inherit].</param>
-        public ConstructorArgument(string name, Func<IContext, ITarget, object> valueCallback, bool shouldInherit)
+        public ConstructorArgument([NotNull] string name, [NotNull] Func<IContext, ITarget, object> valueCallback, bool shouldInherit)
             : base(name, valueCallback, shouldInherit)
         {
         }

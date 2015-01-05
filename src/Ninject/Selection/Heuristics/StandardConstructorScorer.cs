@@ -27,6 +27,7 @@ namespace Ninject.Selection.Heuristics
     using System.Collections;
     using System.Linq;
 
+    using JetBrains.Annotations;
     using Ninject.Activation;
     using Ninject.Components;
     using Ninject.Infrastructure;
@@ -88,7 +89,7 @@ namespace Ninject.Selection.Heuristics
         /// <param name="context">The context.</param>
         /// <param name="target">The target.</param>
         /// <returns>Whether a binding exists for the target in the given context.</returns>
-        protected virtual bool BindingExists(IContext context, ITarget target)
+        protected virtual bool BindingExists([NotNull] IContext context, [NotNull] ITarget target)
         {
 			return this.BindingExists(context.Kernel, context, target);
 		}
@@ -100,7 +101,7 @@ namespace Ninject.Selection.Heuristics
         /// <param name="context">The context.</param>
         /// <param name="target">The target.</param>
         /// <returns>Whether a binding exists for the target in the given context.</returns>
-        protected virtual bool BindingExists(IKernel kernel, IContext context, ITarget target)
+        protected virtual bool BindingExists([NotNull] IKernel kernel, [NotNull] IContext context, [NotNull] ITarget target)
         {
             var targetType = GetTargetType(target);
             return kernel.GetBindings(targetType).Any(b => !b.IsImplicit)
@@ -129,7 +130,7 @@ namespace Ninject.Selection.Heuristics
         /// <param name="context">The context.</param>
         /// <param name="target">The target.</param>
         /// <returns>Whether a parameter exists for the target in the given context.</returns>
-        protected virtual bool ParameterExists(IContext context, ITarget target)
+        protected virtual bool ParameterExists([NotNull] IContext context, [NotNull] ITarget target)
         {
             return context
                 .Parameters.OfType<IConstructorArgument>()

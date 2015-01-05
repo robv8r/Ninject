@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Ninject.Activation;
 using Ninject.Components;
 using Ninject.Infrastructure;
@@ -29,6 +30,7 @@ namespace Ninject.Planning.Bindings.Resolvers
         /// <param name="bindings">The multimap of all registered bindings.</param>
         /// <param name="service">The service in question.</param>
         /// <returns>The series of matching bindings.</returns>
-        IEnumerable<IBinding> Resolve(Multimap<Type, IBinding> bindings, Type service);
+        [NotNull]
+        IEnumerable<IBinding> Resolve([NotNull] Multimap<Type, IBinding> bindings, [NotNull] Type service);
     }
 }

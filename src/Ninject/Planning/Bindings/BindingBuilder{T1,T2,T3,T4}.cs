@@ -27,6 +27,7 @@ namespace Ninject.Planning.Bindings
 #if !NETCF
     using System.Linq.Expressions;
 #endif    
+    using JetBrains.Annotations;
     using Ninject.Activation;
     using Ninject.Syntax;
 
@@ -46,7 +47,7 @@ namespace Ninject.Planning.Bindings
         /// <param name="bindingConfigurationConfiguration">The binding to build.</param>
         /// <param name="kernel">The kernel.</param>
         /// <param name="serviceNames">The names of the services.</param>
-        public BindingBuilder(IBindingConfiguration bindingConfigurationConfiguration, IKernel kernel, string serviceNames)
+        public BindingBuilder([NotNull] IBindingConfiguration bindingConfigurationConfiguration, [NotNull] IKernel kernel, [CanBeNull] string serviceNames)
             : base(bindingConfigurationConfiguration, kernel, serviceNames)
         {
         }

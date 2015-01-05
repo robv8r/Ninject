@@ -23,6 +23,7 @@
 
 namespace Ninject
 {
+    using JetBrains.Annotations;
     using Ninject.Activation;
     using Ninject.Activation.Caching;
     using Ninject.Activation.Strategies;
@@ -43,7 +44,7 @@ namespace Ninject
         /// Initializes a new instance of the <see cref="StandardKernel"/> class.
         /// </summary>
         /// <param name="modules">The modules to load into the kernel.</param>
-        public StandardKernel(params INinjectModule[] modules) : base(modules)
+        public StandardKernel([NotNull] params INinjectModule[] modules) : base(modules)
         {
         }
 
@@ -52,7 +53,7 @@ namespace Ninject
         /// </summary>
         /// <param name="settings">The configuration to use.</param>
         /// <param name="modules">The modules to load into the kernel.</param>
-        public StandardKernel(INinjectSettings settings, params INinjectModule[] modules) : base(settings, modules)
+        public StandardKernel([NotNull] INinjectSettings settings, [NotNull] params INinjectModule[] modules) : base(settings, modules)
         {
         }
 

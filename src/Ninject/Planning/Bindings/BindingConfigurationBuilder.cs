@@ -26,6 +26,7 @@ namespace Ninject.Planning.Bindings
     using System;
     using System.Linq;
 
+    using JetBrains.Annotations;
     using Ninject.Activation;
     using Ninject.Infrastructure;
     using Ninject.Infrastructure.Introspection;
@@ -61,7 +62,7 @@ namespace Ninject.Planning.Bindings
         /// <param name="bindingConfiguration">The binding configuration to build.</param>
         /// <param name="serviceNames">The names of the configured services.</param>
         /// <param name="kernel">The kernel.</param>
-        public BindingConfigurationBuilder(IBindingConfiguration bindingConfiguration, string serviceNames, IKernel kernel)
+        public BindingConfigurationBuilder([NotNull] IBindingConfiguration bindingConfiguration, [CanBeNull] string serviceNames, [NotNull] IKernel kernel)
         {
             Ensure.ArgumentNotNull(bindingConfiguration, "bindingConfiguration");
             Ensure.ArgumentNotNull(kernel, "kernel");

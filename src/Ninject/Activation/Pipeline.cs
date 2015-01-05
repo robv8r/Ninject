@@ -12,6 +12,7 @@ namespace Ninject.Activation
 {
     using System.Collections.Generic;
     using System.Linq;
+    using JetBrains.Annotations;
     using Ninject.Activation.Caching;
     using Ninject.Activation.Strategies;
     using Ninject.Components;
@@ -33,7 +34,7 @@ namespace Ninject.Activation
         /// </summary>
         /// <param name="strategies">The strategies to execute during activation and deactivation.</param>
         /// <param name="activationCache">The activation cache.</param>
-        public Pipeline(IEnumerable<IActivationStrategy> strategies, IActivationCache activationCache)
+        public Pipeline([NotNull] IEnumerable<IActivationStrategy> strategies, [NotNull] IActivationCache activationCache)
         {
             Ensure.ArgumentNotNull(strategies, "strategies");
             this.Strategies = strategies.ToList();

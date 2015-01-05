@@ -9,6 +9,7 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 using Ninject.Components;
 #endregion
 
@@ -23,6 +24,6 @@ namespace Ninject.Planning.Strategies
         /// Contributes to the specified plan.
         /// </summary>
         /// <param name="plan">The plan that is being generated.</param>
-        void Execute(IPlan plan);
+        void Execute([NotNull] IPlan plan);
     }
 }

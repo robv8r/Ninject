@@ -21,6 +21,7 @@
 namespace Ninject.Parameters
 {
     using System;
+    using JetBrains.Annotations;
     using Ninject.Activation;
     using Ninject.Infrastructure;
     using Ninject.Planning.Targets;
@@ -37,7 +38,7 @@ namespace Ninject.Parameters
         /// </summary>
         /// <param name="type">The type of the argument to override.</param>
         /// <param name="valueCallback">The callback that will be triggered to get the parameter's value.</param>
-        public TypeMatchingConstructorArgument(Type type, Func<IContext, ITarget, object> valueCallback)
+        public TypeMatchingConstructorArgument([NotNull] Type type, [NotNull] Func<IContext, ITarget, object> valueCallback)
             : this(type, valueCallback, false)
         {
         }
@@ -48,7 +49,7 @@ namespace Ninject.Parameters
         /// <param name="type">The type of the argument to override.</param>
         /// <param name="valueCallback">The callback that will be triggered to get the parameter's value.</param>
         /// <param name="shouldInherit">Whether the parameter should be inherited into child requests.</param>
-        public TypeMatchingConstructorArgument(Type type, Func<IContext, ITarget, object> valueCallback, bool shouldInherit)
+        public TypeMatchingConstructorArgument([NotNull] Type type, [NotNull] Func<IContext, ITarget, object> valueCallback, bool shouldInherit)
         {
             Ensure.ArgumentNotNull(type, "type");
             Ensure.ArgumentNotNull(valueCallback, "valueCallback");

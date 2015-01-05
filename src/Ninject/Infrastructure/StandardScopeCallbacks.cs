@@ -9,6 +9,7 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 using Ninject.Activation;
 #endregion
 
@@ -22,16 +23,19 @@ namespace Ninject.Infrastructure
         /// <summary>
         /// Gets the callback for transient scope.
         /// </summary>
+        [NotNull]
         public static readonly Func<IContext, object> Transient = ctx => null;
 
         /// <summary>
         /// Gets the callback for singleton scope.
         /// </summary>
+        [NotNull]
         public static readonly Func<IContext, object> Singleton = ctx => ctx.Kernel;
 
         /// <summary>
         /// Gets the callback for thread scope.
         /// </summary>
+        [NotNull]
         public static readonly Func<IContext, object> Thread = ctx => System.Threading.Thread.CurrentThread;
     }
 }

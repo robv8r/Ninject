@@ -9,6 +9,7 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 #endregion
 
 namespace Ninject.Components
@@ -21,6 +22,7 @@ namespace Ninject.Components
         /// <summary>
         /// Gets or sets the settings.
         /// </summary>
+        [NotNull]
         INinjectSettings Settings { get; set; }
     }
 }

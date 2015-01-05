@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Reflection;
+using JetBrains.Annotations;
 using Ninject.Activation;
 using Ninject.Components;
 using Ninject.Planning.Directives;
@@ -29,6 +30,6 @@ namespace Ninject.Selection.Heuristics
         /// <param name="context">The injection context.</param>
         /// <param name="directive">The constructor.</param>
         /// <returns>The constructor's score.</returns>
-        int Score(IContext context, ConstructorInjectionDirective directive);
+        int Score([NotNull] IContext context, [NotNull] ConstructorInjectionDirective directive);
     }
 }

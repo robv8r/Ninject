@@ -9,6 +9,7 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 using Ninject.Planning.Bindings;
 #endregion
 
@@ -22,6 +23,7 @@ namespace Ninject.Infrastructure
         /// <summary>
         /// Gets the binding.
         /// </summary>
+        [NotNull]
         IBindingConfiguration BindingConfiguration { get; }
     }
 }

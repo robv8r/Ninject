@@ -9,6 +9,7 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 #endregion
 
 namespace Ninject.Planning.Bindings
@@ -22,6 +23,7 @@ namespace Ninject.Planning.Bindings
         /// <summary>
         /// Gets or sets the binding's name.
         /// </summary>
+        [NotNull]
         string Name { get; set; }
 
         /// <summary>
@@ -29,7 +31,7 @@ namespace Ninject.Planning.Bindings
         /// </summary>
         /// <param name="key">The metadata key.</param>
         /// <returns><c>True</c> if such a piece of metadata exists; otherwise, <c>false</c>.</returns>
-        bool Has(string key);
+        bool Has([NotNull] string key);
 
         /// <summary>
         /// Gets the value of metadata defined with the specified key, cast to the specified type.
@@ -37,7 +39,8 @@ namespace Ninject.Planning.Bindings
         /// <typeparam name="T">The type of value to expect.</typeparam>
         /// <param name="key">The metadata key.</param>
         /// <returns>The metadata value.</returns>
-        T Get<T>(string key);
+        [CanBeNull]
+        T Get<T>([NotNull] string key);
 
         /// <summary>
         /// Gets the value of metadata defined with the specified key.
@@ -45,13 +48,14 @@ namespace Ninject.Planning.Bindings
         /// <param name="key">The metadata key.</param>
         /// <param name="defaultValue">The value to return if the binding has no metadata set with the specified key.</param>
         /// <returns>The metadata value, or the default value if none was set.</returns>
-        T Get<T>(string key, T defaultValue);
+        [CanBeNull]
+        T Get<T>([NotNull] string key, [CanBeNull] T defaultValue);
 
         /// <summary>
         /// Sets the value of a piece of metadata.
         /// </summary>
         /// <param name="key">The metadata key.</param>
         /// <param name="value">The metadata value.</param>
-        void Set(string key, object value);
+        void Set([NotNull] string key, [CanBeNull] object value);
     }
 }

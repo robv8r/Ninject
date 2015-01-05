@@ -25,6 +25,7 @@ namespace Ninject.Syntax
 {
     using System;
 
+    using JetBrains.Annotations;
     using Ninject.Activation;
 
     /// <summary>
@@ -38,6 +39,7 @@ namespace Ninject.Syntax
         /// should be re-used for all subsequent requests.
         /// </summary>
         /// <returns>The fluent syntax.</returns>
+        [NotNull]
         IBindingNamedWithOrOnSyntax<T> InSingletonScope();
 
         /// <summary>
@@ -45,12 +47,14 @@ namespace Ninject.Syntax
         /// their lifecycle managed by Ninject.
         /// </summary>
         /// <returns>The fluent syntax.</returns>
+        [NotNull]
         IBindingNamedWithOrOnSyntax<T> InTransientScope();
 
         /// <summary>
         /// Indicates that instances activated via the binding should be re-used within the same thread.
         /// </summary>
         /// <returns>The fluent syntax.</returns>
+        [NotNull]
         IBindingNamedWithOrOnSyntax<T> InThreadScope();
 
         /// <summary>
@@ -59,6 +63,7 @@ namespace Ninject.Syntax
         /// </summary>
         /// <param name="scope">The callback that returns the scope.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingNamedWithOrOnSyntax<T> InScope(Func<IContext, object> scope);
+        [NotNull]
+        IBindingNamedWithOrOnSyntax<T> InScope([NotNull] Func<IContext, object> scope);
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace Ninject.Activation.Caching
 {
+    using JetBrains.Annotations;
     using Ninject.Components;
 
     /// <summary>
@@ -16,13 +17,13 @@
         /// Adds an activated instance.
         /// </summary>
         /// <param name="instance">The instance to be added.</param>
-        void AddActivatedInstance(object instance);
+        void AddActivatedInstance([NotNull] object instance);
 
         /// <summary>
         /// Adds an deactivated instance.
         /// </summary>
         /// <param name="instance">The instance to be added.</param>
-        void AddDeactivatedInstance(object instance);
+        void AddDeactivatedInstance([NotNull] object instance);
         
         /// <summary>
         /// Determines whether the specified instance is activated.
@@ -31,7 +32,7 @@
         /// <returns>
         ///     <c>true</c> if the specified instance is activated; otherwise, <c>false</c>.
         /// </returns>
-        bool IsActivated(object instance);
+        bool IsActivated([NotNull] object instance);
 
         /// <summary>
         /// Determines whether the specified instance is deactivated.
@@ -40,6 +41,6 @@
         /// <returns>
         ///     <c>true</c> if the specified instance is deactivated; otherwise, <c>false</c>.
         /// </returns>
-        bool IsDeactivated(object instance);
+        bool IsDeactivated([NotNull] object instance);
     }
 }

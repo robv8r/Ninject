@@ -26,6 +26,7 @@ namespace Ninject.Modules
     using System;
     using System.Collections.Generic;
 
+    using JetBrains.Annotations;
     using Ninject.Infrastructure;
     using Ninject.Infrastructure.Language;
     using Ninject.Planning.Bindings;
@@ -60,6 +61,7 @@ namespace Ninject.Modules
         /// <summary>
         /// Gets the bindings that were registered by the module.
         /// </summary>
+        [NotNull]
         public ICollection<IBinding> Bindings { get; private set; }
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿namespace Ninject.Parameters
 {
+    using JetBrains.Annotations;
     using Ninject.Activation;
     using Ninject.Planning.Targets;
 
@@ -17,6 +18,6 @@
         /// <param name="context">The context.</param>
         /// <param name="target">The target.</param>
         /// <returns>Tre if the parameter applies in the specified context to the specified target.</returns>
-        bool AppliesToTarget(IContext context, ITarget target);
+        bool AppliesToTarget([NotNull] IContext context, [NotNull] ITarget target);
     }
 }

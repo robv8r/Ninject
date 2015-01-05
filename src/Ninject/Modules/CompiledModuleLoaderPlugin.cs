@@ -28,6 +28,7 @@ namespace Ninject.Modules
     using System.Linq;
     using System.Reflection;
 
+    using JetBrains.Annotations;
     using Ninject.Components;
     using Ninject.Infrastructure;
     using Ninject.Infrastructure.Language;
@@ -40,11 +41,13 @@ namespace Ninject.Modules
         /// <summary>
         /// The assembly name retriever.
         /// </summary>
+        [NotNull]
         private readonly IAssemblyNameRetriever assemblyNameRetriever;
 
         /// <summary>
         /// The file extensions that are supported.
         /// </summary>
+        [NotNull]
         private static readonly string[] Extensions = new[] { ".dll" };
 
         /// <summary>
@@ -52,7 +55,7 @@ namespace Ninject.Modules
         /// </summary>
         /// <param name="kernel">The kernel into which modules will be loaded.</param>
         /// <param name="assemblyNameRetriever">The assembly name retriever.</param>
-        public CompiledModuleLoaderPlugin(IKernel kernel, IAssemblyNameRetriever assemblyNameRetriever)
+        public CompiledModuleLoaderPlugin([NotNull] IKernel kernel, [NotNull] IAssemblyNameRetriever assemblyNameRetriever)
         {
             Ensure.ArgumentNotNull(kernel, "kernel");
             this.Kernel = kernel;
@@ -62,6 +65,7 @@ namespace Ninject.Modules
         /// <summary>
         /// Gets the kernel into which modules will be loaded.
         /// </summary>
+        [NotNull]
         public IKernel Kernel { get; private set; }
 
         /// <summary>

@@ -11,6 +11,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using Ninject.Infrastructure;
 using Ninject.Parameters;
 using Ninject.Planning.Bindings;
@@ -90,6 +91,7 @@ namespace Ninject.Activation
         /// <summary>
         /// Gets the callback that resolves the scope for the request, if an external scope was provided.
         /// </summary>
+        [CanBeNull]
         public Func<object> ScopeCallback { get; private set; }
 
         /// <summary>
@@ -101,7 +103,7 @@ namespace Ninject.Activation
         /// <param name="scopeCallback">The scope callback, if an external scope was specified.</param>
         /// <param name="isOptional"><c>True</c> if the request is optional; otherwise, <c>false</c>.</param>
         /// <param name="isUnique"><c>True</c> if the request should return a unique result; otherwise, <c>false</c>.</param>
-        public Request(Type service, Func<IBindingMetadata, bool> constraint, IEnumerable<IParameter> parameters, Func<object> scopeCallback, bool isOptional, bool isUnique)
+        public Request([NotNull] Type service, [CanBeNull] Func<IBindingMetadata, bool> constraint, [NotNull] IEnumerable<IParameter> parameters, [CanBeNull] Func<object> scopeCallback, bool isOptional, bool isUnique)
         {
             Ensure.ArgumentNotNull(service, "service");
             Ensure.ArgumentNotNull(parameters, "parameters");
@@ -123,7 +125,7 @@ namespace Ninject.Activation
         /// <param name="service">The service that was requested.</param>
         /// <param name="target">The target that will receive the injection.</param>
         /// <param name="scopeCallback">The scope callback, if an external scope was specified.</param>
-        public Request(IContext parentContext, Type service, ITarget target, Func<object> scopeCallback)
+        public Request([NotNull] IContext parentContext, [NotNull] Type service, [NotNull] ITarget target, [CanBeNull] Func<object> scopeCallback)
         {
             Ensure.ArgumentNotNull(parentContext, "parentContext");
             Ensure.ArgumentNotNull(service, "service");

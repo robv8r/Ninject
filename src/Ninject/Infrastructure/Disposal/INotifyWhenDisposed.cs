@@ -9,6 +9,7 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 #endregion
 
 namespace Ninject.Infrastructure.Disposal
@@ -21,6 +22,7 @@ namespace Ninject.Infrastructure.Disposal
         /// <summary>
         /// Occurs when the object is disposed.
         /// </summary>
+        [CanBeNull]
         event EventHandler Disposed;
     }
 }

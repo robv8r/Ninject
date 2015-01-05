@@ -15,6 +15,7 @@ namespace Ninject.Infrastructure.Language
     using System.Globalization;
     using System.Linq;
     using System.Reflection;
+    using JetBrains.Annotations;
 
     /// <summary>
     /// Extensions for MemberInfo
@@ -54,7 +55,7 @@ namespace Ninject.Infrastructure.Language
         /// <returns>
         /// 	<c>true</c> if the specified member has attribute; otherwise, <c>false</c>.
         /// </returns>
-        public static bool HasAttribute<T>(this MemberInfo member)
+        public static bool HasAttribute<T>([NotNull] this MemberInfo member)
         {
             return member.HasAttribute(typeof(T));
         }
@@ -67,7 +68,7 @@ namespace Ninject.Infrastructure.Language
         /// <returns>
         /// 	<c>true</c> if the specified member has attribute; otherwise, <c>false</c>.
         /// </returns>
-        public static bool HasAttribute(this MemberInfo member, Type type)
+        public static bool HasAttribute([NotNull] this MemberInfo member, [NotNull] Type type)
         {
             var propertyInfo = member as PropertyInfo;
             if (propertyInfo != null)
@@ -95,9 +96,10 @@ namespace Ninject.Infrastructure.Language
         /// <param name="propertyDefinition">The property definition.</param>
         /// <param name="flags">The flags.</param>
         /// <returns>The property info from the declared type of the property.</returns>
+        [NotNull]
         public static PropertyInfo GetPropertyFromDeclaredType(
-            this MemberInfo memberInfo,
-            PropertyInfo propertyDefinition,
+            [NotNull] this MemberInfo memberInfo,
+            [NotNull] PropertyInfo propertyDefinition,
             BindingFlags flags)
         {
             return memberInfo.DeclaringType.GetProperty(
@@ -116,7 +118,7 @@ namespace Ninject.Infrastructure.Language
         /// <returns>
         /// 	<c>true</c> if the specified property info is private; otherwise, <c>false</c>.
         /// </returns>
-        public static bool IsPrivate(this PropertyInfo propertyInfo)
+        public static bool IsPrivate([NotNull] this PropertyInfo propertyInfo)
         {
             var getMethod = propertyInfo.GetGetMethod(true);
             var setMethod = propertyInfo.GetSetMethod(true);
@@ -131,7 +133,8 @@ namespace Ninject.Infrastructure.Language
         /// <param name="attributeType">Type of the attribute.</param>
         /// <param name="inherited">if set to <c>true</c> [inherited].</param>
         /// <returns></returns>
-        public static object[] GetCustomAttributesExtended(this MemberInfo member, Type attributeType, bool inherited)
+        [NotNull]
+        public static object[] GetCustomAttributesExtended([NotNull] this MemberInfo member, [NotNull] Type attributeType, bool inherited)
         {
 #if !NET_35 && !MONO_40
             return Attribute.GetCustomAttributes(member, attributeType, inherited);

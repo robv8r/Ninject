@@ -3,6 +3,7 @@ namespace Ninject.Activation.Caching
     using System.Collections.Generic;
     using System.Runtime.CompilerServices;
 
+    using JetBrains.Annotations;
     using Ninject.Infrastructure;
 
     /// <summary>
@@ -16,7 +17,7 @@ namespace Ninject.Activation.Caching
         /// <param name="x">The first object.</param>
         /// <param name="y">The second object.</param>
         /// <returns>True if the objects are equal; otherwise false</returns>
-        public new bool Equals(object x, object y)
+        public new bool Equals([NotNull] object x, object y)
         {
             return x.Equals(y);
         }
@@ -26,7 +27,7 @@ namespace Ninject.Activation.Caching
         /// </summary>
         /// <param name="obj">The object for which the hash code is calculated.</param>
         /// <returns>The hash code of the specified object.</returns>
-        public int GetHashCode(object obj)
+        public int GetHashCode([NotNull] object obj)
         {
             var weakReference = obj as ReferenceEqualWeakReference;
             return weakReference != null ? weakReference.GetHashCode() : 

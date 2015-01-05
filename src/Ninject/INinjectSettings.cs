@@ -9,12 +9,15 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 using Ninject.Activation;
 
 #endregion
 
 namespace Ninject
 {
+    using JetBrains.Annotations;
+    
     /// <summary>
     /// Contains configuration options for Ninject.
     /// </summary>
@@ -33,6 +36,7 @@ namespace Ninject
         /// <summary>
         /// Gets the default scope callback.
         /// </summary>
+        [NotNull]
         Func<IContext, object> DefaultScopeCallback { get; }
 
         #if !NO_ASSEMBLY_SCANNING
@@ -44,6 +48,7 @@ namespace Ninject
         /// <summary>
         /// Gets the paths that should be searched for extensions.
         /// </summary>
+        [NotNull]
         string[] ExtensionSearchPatterns { get; }
         #endif //!NO_ASSEMBLY_SCANNING
 

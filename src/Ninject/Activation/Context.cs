@@ -11,6 +11,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using Ninject.Activation.Caching;
 using Ninject.Infrastructure;
 using Ninject.Infrastructure.Introspection;
@@ -26,6 +27,7 @@ namespace Ninject.Activation
     /// </summary>
     public class Context : IContext
     {
+        [CanBeNull]
         private WeakReference cachedScope;
 
         /// <summary>
@@ -66,16 +68,19 @@ namespace Ninject.Activation
         /// <summary>
         /// Gets or sets the cache component.
         /// </summary>
+        [NotNull]
         public ICache Cache { get; private set; }
 
         /// <summary>
         /// Gets or sets the planner component.
         /// </summary>
+        [NotNull]
         public IPlanner Planner { get; private set; }
 
         /// <summary>
         /// Gets or sets the pipeline component.
         /// </summary>
+        [NotNull]
         public IPipeline Pipeline { get; private set; }
 
         /// <summary>
@@ -87,7 +92,7 @@ namespace Ninject.Activation
         /// <param name="cache">The cache component.</param>
         /// <param name="planner">The planner component.</param>
         /// <param name="pipeline">The pipeline component.</param>
-        public Context(IKernel kernel, IRequest request, IBinding binding, ICache cache, IPlanner planner, IPipeline pipeline)
+        public Context([NotNull] IKernel kernel, [NotNull] IRequest request, [NotNull] IBinding binding, [NotNull] ICache cache, [NotNull] IPlanner planner, [NotNull] IPipeline pipeline)
         {
             Ensure.ArgumentNotNull(kernel, "kernel");
             Ensure.ArgumentNotNull(request, "request");

@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Reflection;
+using JetBrains.Annotations;
 #endregion
 
 namespace Ninject.Planning.Targets
@@ -39,6 +40,6 @@ namespace Ninject.Planning.Targets
         /// Initializes a new instance of the <see cref="PropertyTarget"/> class.
         /// </summary>
         /// <param name="site">The property that this target represents.</param>
-        public PropertyTarget(PropertyInfo site) : base(site, site) { }
+        public PropertyTarget([NotNull] PropertyInfo site) : base(site, site) { }
     }
 }

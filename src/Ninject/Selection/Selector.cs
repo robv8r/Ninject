@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using JetBrains.Annotations;
 using Ninject.Components;
 using Ninject.Infrastructure;
 using Ninject.Selection.Heuristics;
@@ -58,7 +59,7 @@ namespace Ninject.Selection
         /// </summary>
         /// <param name="constructorScorer">The constructor scorer.</param>
         /// <param name="injectionHeuristics">The injection heuristics.</param>
-        public Selector(IConstructorScorer constructorScorer, IEnumerable<IInjectionHeuristic> injectionHeuristics)
+        public Selector([NotNull] IConstructorScorer constructorScorer, [NotNull] IEnumerable<IInjectionHeuristic> injectionHeuristics)
         {
             Ensure.ArgumentNotNull(constructorScorer, "constructorScorer");
             Ensure.ArgumentNotNull(injectionHeuristics, "injectionHeuristics");

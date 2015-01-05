@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Reflection;
+using JetBrains.Annotations;
 using Ninject.Infrastructure;
 #endregion
 
@@ -63,7 +64,7 @@ namespace Ninject.Planning.Targets
         /// </summary>
         /// <param name="method">The method that defines the parameter.</param>
         /// <param name="site">The parameter that this target represents.</param>
-        public ParameterTarget(MethodBase method, ParameterInfo site) : base(method, site)
+        public ParameterTarget([NotNull] MethodBase method, [NotNull] ParameterInfo site) : base(method, site)
         {
             defaultValue = new Future<object>(() => site.DefaultValue);
         }

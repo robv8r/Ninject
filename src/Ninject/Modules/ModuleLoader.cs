@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using JetBrains.Annotations;
 using Ninject.Components;
 using Ninject.Infrastructure;
 #endregion
@@ -27,13 +28,14 @@ namespace Ninject.Modules
         /// <summary>
         /// Gets or sets the kernel into which modules will be loaded.
         /// </summary>
+        [NotNull]
         public IKernel Kernel { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ModuleLoader"/> class.
         /// </summary>
         /// <param name="kernel">The kernel into which modules will be loaded.</param>
-        public ModuleLoader(IKernel kernel)
+        public ModuleLoader([NotNull] IKernel kernel)
         {
             Ensure.ArgumentNotNull(kernel, "kernel");
             Kernel = kernel;

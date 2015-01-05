@@ -9,6 +9,7 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 using Ninject.Infrastructure;
 #endregion
 
@@ -23,13 +24,14 @@ namespace Ninject.Activation.Providers
         /// <summary>
         /// Gets the value that the provider will return.
         /// </summary>
+        [NotNull]
         public T Value { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ConstantProvider&lt;T&gt; class.
         /// </summary>
         /// <param name="value">The value that the provider should return.</param>
-        public ConstantProvider(T value)
+        public ConstantProvider([NotNull] T value)
         {
             Value = value;
         }

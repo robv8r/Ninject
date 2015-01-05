@@ -11,6 +11,7 @@
 namespace Ninject.Activation
 {
     using System;
+    using JetBrains.Annotations;
     using Ninject.Infrastructure;
 
     /// <summary>
@@ -43,6 +44,7 @@ namespace Ninject.Activation
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns>The created instance.</returns>
-        protected abstract T CreateInstance(IContext context);
+        [NotNull]
+        protected abstract T CreateInstance([NotNull] IContext context);
     }
 }

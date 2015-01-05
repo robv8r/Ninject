@@ -9,6 +9,7 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 using Ninject.Infrastructure;
 using Ninject.Planning.Bindings;
 #endregion
@@ -24,13 +25,14 @@ namespace Ninject
         /// <summary>
         /// Gets the binding name.
         /// </summary>
+        [NotNull]
         public string Name { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NamedAttribute"/> class.
         /// </summary>
         /// <param name="name">The name of the binding(s) to use.</param>
-        public NamedAttribute(string name)
+        public NamedAttribute([NotNull] string name)
         {
             Ensure.ArgumentNotNullOrEmpty(name, "name");
             Name = name;

@@ -11,6 +11,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using JetBrains.Annotations;
 using Ninject.Activation.Blocks;
 using Ninject.Components;
 using Ninject.Infrastructure.Disposal;
@@ -30,17 +31,20 @@ namespace Ninject
         /// <summary>
         /// Gets the kernel settings.
         /// </summary>
+        [NotNull]
         INinjectSettings Settings { get; }
 
         /// <summary>
         /// Gets the component container, which holds components that contribute to Ninject.
         /// </summary>
+        [NotNull]
         IComponentContainer Components { get; }
 
         /// <summary>
         /// Gets the modules that have been loaded into the kernel.
         /// </summary>
         /// <returns>A series of loaded modules.</returns>
+        [NotNull]
         IEnumerable<INinjectModule> GetModules();
 
         /// <summary>
@@ -48,52 +52,54 @@ namespace Ninject
         /// </summary>
         /// <param name="name">The name of the module.</param>
         /// <returns><c>True</c> if the specified module has been loaded; otherwise, <c>false</c>.</returns>
-        bool HasModule(string name);
+        bool HasModule([NotNull] string name);
 
         /// <summary>
         /// Loads the module(s) into the kernel.
         /// </summary>
         /// <param name="m">The modules to load.</param>
-        void Load(IEnumerable<INinjectModule> m);
+        void Load([NotNull] IEnumerable<INinjectModule> m);
 
         #if !NO_ASSEMBLY_SCANNING
         /// <summary>
         /// Loads modules from the files that match the specified pattern(s).
         /// </summary>
         /// <param name="filePatterns">The file patterns (i.e. "*.dll", "modules/*.rb") to match.</param>
-        void Load(IEnumerable<string> filePatterns);
+        void Load([NotNull] IEnumerable<string> filePatterns);
 
         /// <summary>
         /// Loads modules defined in the specified assemblies.
         /// </summary>
         /// <param name="assemblies">The assemblies to search.</param>
-        void Load(IEnumerable<Assembly> assemblies);
+        void Load([NotNull] IEnumerable<Assembly> assemblies);
         #endif
 
         /// <summary>
         /// Unloads the plugin with the specified name.
         /// </summary>
         /// <param name="name">The plugin's name.</param>
-        void Unload(string name);
+        void Unload([NotNull] string name);
 
         /// <summary>
         /// Injects the specified existing instance, without managing its lifecycle.
         /// </summary>
         /// <param name="instance">The instance to inject.</param>
         /// <param name="parameters">The parameters to pass to the request.</param>
-        void Inject(object instance, params IParameter[] parameters);
+        void Inject([NotNull] object instance, [NotNull] params IParameter[] parameters);
 
         /// <summary>
         /// Gets the bindings registered for the specified service.
         /// </summary>
         /// <param name="service">The service in question.</param>
         /// <returns>A series of bindings that are registered for the service.</returns>
-        IEnumerable<IBinding> GetBindings(Type service);
+        [NotNull]
+        IEnumerable<IBinding> GetBindings([NotNull] Type service);
 
         /// <summary>
         /// Begins a new activation block, which can be used to deterministically dispose resolved instances.
         /// </summary>
         /// <returns>The new activation block.</returns>
+        [NotNull]
         IActivationBlock BeginBlock();
     }
 }

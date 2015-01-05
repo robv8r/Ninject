@@ -9,6 +9,7 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 using Ninject.Planning.Bindings;
 #endregion
 
@@ -25,6 +26,6 @@ namespace Ninject
         /// </summary>
         /// <param name="metadata">The metadata in question.</param>
         /// <returns><c>True</c> if the metadata matches; otherwise <c>false</c>.</returns>
-        public abstract bool Matches(IBindingMetadata metadata);
+        public abstract bool Matches([NotNull] IBindingMetadata metadata);
     }
 }

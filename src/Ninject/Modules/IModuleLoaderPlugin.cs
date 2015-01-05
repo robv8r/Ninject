@@ -11,6 +11,7 @@
 #region Using Directives
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Ninject.Components;
 #endregion
 
@@ -24,13 +25,14 @@ namespace Ninject.Modules
         /// <summary>
         /// Gets the file extensions that the plugin understands how to load.
         /// </summary>
+        [NotNull]
         IEnumerable<string> SupportedExtensions { get; }
 
         /// <summary>
         /// Loads modules from the specified files.
         /// </summary>
         /// <param name="filenames">The names of the files to load modules from.</param>
-        void LoadModules(IEnumerable<string> filenames);
+        void LoadModules([NotNull] IEnumerable<string> filenames);
     }
 }
 #endif

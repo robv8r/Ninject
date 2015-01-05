@@ -27,6 +27,7 @@ namespace Ninject.Planning.Bindings
 #if !NETCF
     using System.Linq.Expressions;
 #endif
+    using JetBrains.Annotations;
     using Ninject.Activation;
     using Ninject.Activation.Providers;
     using Ninject.Infrastructure;
@@ -44,7 +45,7 @@ namespace Ninject.Planning.Bindings
         /// <param name="bindingConfiguration">The binding to build.</param>
         /// <param name="kernel">The kernel.</param>
         /// <param name="serviceNames">The names of the services.</param>
-        public BindingBuilder(IBindingConfiguration bindingConfiguration, IKernel kernel, string serviceNames)
+        public BindingBuilder([NotNull] IBindingConfiguration bindingConfiguration, [NotNull] IKernel kernel, [CanBeNull] string serviceNames)
         {
             Ensure.ArgumentNotNull(bindingConfiguration, "binding");
             Ensure.ArgumentNotNull(kernel, "kernel");
@@ -57,17 +58,20 @@ namespace Ninject.Planning.Bindings
         /// <summary>
         /// Gets the binding being built.
         /// </summary>
+        [NotNull]
         public IBindingConfiguration BindingConfiguration { get; private set; }
 
         /// <summary>
         /// Gets the kernel.
         /// </summary>
+        [NotNull]
         public IKernel Kernel { get; private set; }
 
         /// <summary>
         /// Gets the names of the services.
         /// </summary>
         /// <value>The names of the services.</value>
+        [NotNull]
         protected string ServiceNames { get; private set; }
 
         /// <summary>
@@ -75,6 +79,7 @@ namespace Ninject.Planning.Bindings
         /// </summary>
         /// <typeparam name="TImplementation">The implementation type.</typeparam>
         /// <returns>The fluent syntax.</returns>
+        [NotNull]
         protected IBindingWhenInNamedWithOrOnSyntax<TImplementation> InternalTo<TImplementation>()
         {
             return this.InternalTo<TImplementation>(typeof(TImplementation));
@@ -86,6 +91,7 @@ namespace Ninject.Planning.Bindings
         /// <typeparam name="T">The type of the returned syntax.</typeparam>
         /// <param name="implementation">The implementation type.</param>
         /// <returns>The fluent syntax.</returns>
+        [NotNull]
         protected IBindingWhenInNamedWithOrOnSyntax<T> InternalTo<T>(Type implementation)
         {
             this.BindingConfiguration.ProviderCallback = StandardProvider.GetCreationCallback(implementation);
@@ -100,7 +106,8 @@ namespace Ninject.Planning.Bindings
         /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
         /// <param name="value">The constant value.</param>
         /// <returns>The fluent syntax.</returns>
-        protected IBindingWhenInNamedWithOrOnSyntax<TImplementation> InternalToConfiguration<TImplementation>(TImplementation value) 
+        [NotNull]
+        protected IBindingWhenInNamedWithOrOnSyntax<TImplementation> InternalToConfiguration<TImplementation>([NotNull] TImplementation value) 
         {
             this.BindingConfiguration.ProviderCallback = ctx => new ConstantProvider<TImplementation>(value);
             this.BindingConfiguration.Target = BindingTarget.Constant;
@@ -115,7 +122,8 @@ namespace Ninject.Planning.Bindings
         /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
         /// <param name="method">The method.</param>
         /// <returns>The fluent syntax.</returns>
-        protected IBindingWhenInNamedWithOrOnSyntax<TImplementation> InternalToMethod<TImplementation>(Func<IContext, TImplementation> method)
+        [NotNull]
+        protected IBindingWhenInNamedWithOrOnSyntax<TImplementation> InternalToMethod<TImplementation>([NotNull] Func<IContext, TImplementation> method)
         {
             this.BindingConfiguration.ProviderCallback = ctx => new CallbackProvider<TImplementation>(method);
             this.BindingConfiguration.Target = BindingTarget.Method;
@@ -129,7 +137,8 @@ namespace Ninject.Planning.Bindings
         /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
         /// <param name="provider">The provider.</param>
         /// <returns>The fluent syntax.</returns>
-        protected IBindingWhenInNamedWithOrOnSyntax<TImplementation> InternalToProvider<TImplementation>(IProvider<TImplementation> provider)
+        [NotNull]
+        protected IBindingWhenInNamedWithOrOnSyntax<TImplementation> InternalToProvider<TImplementation>([NotNull] IProvider<TImplementation> provider)
         {
             this.BindingConfiguration.ProviderCallback = ctx => provider;
             this.BindingConfiguration.Target = BindingTarget.Provider;
@@ -144,6 +153,7 @@ namespace Ninject.Planning.Bindings
         /// <typeparam name="TProvider">The type of provider to activate.</typeparam>
         /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
         /// <returns>The fluent syntax.</returns>
+        [NotNull]
         protected IBindingWhenInNamedWithOrOnSyntax<TImplementation> ToProviderInternal<TProvider, TImplementation>()
             where TProvider : IProvider
         {
@@ -160,7 +170,8 @@ namespace Ninject.Planning.Bindings
         /// <typeparam name="T">The type of the returned fleunt syntax</typeparam>
         /// <param name="providerType">The type of provider to activate.</param>
         /// <returns>The fluent syntax.</returns>
-        protected IBindingWhenInNamedWithOrOnSyntax<T> ToProviderInternal<T>(Type providerType)
+        [NotNull]
+        protected IBindingWhenInNamedWithOrOnSyntax<T> ToProviderInternal<T>([NotNull] Type providerType)
         {
             this.BindingConfiguration.ProviderCallback = ctx => ctx.Kernel.Get(providerType) as IProvider;
             this.BindingConfiguration.Target = BindingTarget.Provider;
@@ -175,8 +186,9 @@ namespace Ninject.Planning.Bindings
         /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
         /// <param name="newExpression">The expression that specifies the constructor.</param>
         /// <returns>The fluent syntax.</returns>
+        [NotNull]
         protected IBindingWhenInNamedWithOrOnSyntax<TImplementation> InternalToConstructor<TImplementation>(
-            Expression<Func<IConstructorArgumentSyntax, TImplementation>> newExpression)
+            [NotNull] Expression<Func<IConstructorArgumentSyntax, TImplementation>> newExpression)
         {
             var ctorExpression = newExpression.Body as NewExpression;
             if (ctorExpression == null)

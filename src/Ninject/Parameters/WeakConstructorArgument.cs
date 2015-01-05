@@ -23,6 +23,7 @@ namespace Ninject.Parameters
 {
     using System;
 
+    using JetBrains.Annotations;
     using Ninject.Activation;
     using Ninject.Planning.Targets;
 
@@ -41,7 +42,7 @@ namespace Ninject.Parameters
         /// </summary>
         /// <param name="name">The name of the argument to override.</param>
         /// <param name="value">The value to inject into the property.</param>
-        public WeakConstructorArgument(string name, object value)
+        public WeakConstructorArgument([NotNull] string name, [CanBeNull] object value)
             : this(name, value, false)
         {
         }
@@ -52,7 +53,7 @@ namespace Ninject.Parameters
         /// <param name="name">The name of the argument to override.</param>
         /// <param name="value">The value to inject into the property.</param>
         /// <param name="shouldInherit">Whether the parameter should be inherited into child requests.</param>
-        public WeakConstructorArgument(string name, object value, bool shouldInherit)
+        public WeakConstructorArgument([NotNull] string name, [CanBeNull] object value, bool shouldInherit)
             : base(name, value, shouldInherit)
         {
             this.weakReference = new WeakReference(value);

@@ -11,6 +11,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using JetBrains.Annotations;
 using Ninject.Components;
 using Ninject.Selection.Heuristics;
 #endregion
@@ -25,11 +26,13 @@ namespace Ninject.Selection
         /// <summary>
         /// Gets or sets the constructor scorer.
         /// </summary>
+        [NotNull]
         IConstructorScorer ConstructorScorer { get; set; }
 
         /// <summary>
         /// Gets the heuristics used to determine which members should be injected.
         /// </summary>
+        [NotNull]
         ICollection<IInjectionHeuristic> InjectionHeuristics { get; }
 
         /// <summary>
@@ -37,6 +40,7 @@ namespace Ninject.Selection
         /// </summary>
         /// <param name="type">The type.</param>
         /// <returns>The selected constructor, or <see langword="null"/> if none were available.</returns>
+        [CanBeNull]
         IEnumerable<ConstructorInfo> SelectConstructorsForInjection(Type type);
 
         /// <summary>
@@ -44,13 +48,15 @@ namespace Ninject.Selection
         /// </summary>
         /// <param name="type">The type.</param>
         /// <returns>A series of the selected properties.</returns>
-        IEnumerable<PropertyInfo> SelectPropertiesForInjection(Type type);
+        [NotNull]
+        IEnumerable<PropertyInfo> SelectPropertiesForInjection([NotNull] Type type);
 
         /// <summary>
         /// Selects methods that should be injected.
         /// </summary>
         /// <param name="type">The type.</param>
         /// <returns>A series of the selected methods.</returns>
-        IEnumerable<MethodInfo> SelectMethodsForInjection(Type type);
+        [NotNull]
+        IEnumerable<MethodInfo> SelectMethodsForInjection([NotNull] Type type);
     }
 }

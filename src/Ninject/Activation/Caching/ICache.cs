@@ -9,6 +9,7 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 using Ninject.Components;
 #endregion
 
@@ -29,28 +30,29 @@ namespace Ninject.Activation.Caching
         /// </summary>
         /// <param name="context">The context to store.</param>
         /// <param name="reference">The instance reference.</param>
-        void Remember(IContext context, InstanceReference reference);
+        void Remember([NotNull] IContext context, [NotNull] InstanceReference reference);
 
         /// <summary>
         /// Tries to retrieve an instance to re-use in the specified context.
         /// </summary>
         /// <param name="context">The context that is being activated.</param>
         /// <returns>The instance for re-use, or <see langword="null"/> if none has been stored.</returns>
-        object TryGet(IContext context);
+        [CanBeNull]
+        object TryGet([NotNull] IContext context);
 
         /// <summary>
         /// Deactivates and releases the specified instance from the cache.
         /// </summary>
         /// <param name="instance">The instance to release.</param>
         /// <returns><see langword="True"/> if the instance was found and released; otherwise <see langword="false"/>.</returns>
-        bool Release(object instance);
+        bool Release([NotNull] object instance);
 
         /// <summary>
         /// Immediately deactivates and removes all instances in the cache that are owned by
         /// the specified scope.
         /// </summary>
         /// <param name="scope">The scope whose instances should be deactivated.</param>
-        void Clear(object scope);
+        void Clear([NotNull] object scope);
 
         /// <summary>
         /// Immediately deactivates and removes all instances in the cache, regardless of scope.

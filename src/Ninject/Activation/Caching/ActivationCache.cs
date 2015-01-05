@@ -3,6 +3,7 @@ namespace Ninject.Activation.Caching
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using JetBrains.Annotations;
     using Ninject.Components;
     using Ninject.Infrastructure;
 
@@ -37,7 +38,7 @@ namespace Ninject.Activation.Caching
         /// Initializes a new instance of the <see cref="ActivationCache"/> class.
         /// </summary>
         /// <param name="cachePruner">The cache pruner.</param>
-        public ActivationCache(ICachePruner cachePruner)
+        public ActivationCache([NotNull] ICachePruner cachePruner)
         {
             cachePruner.Start(this);
         }

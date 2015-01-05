@@ -21,6 +21,7 @@
 
 namespace Ninject.Syntax
 {
+    using JetBrains.Annotations;
     using Ninject.Activation;
 
     /// <summary>
@@ -32,6 +33,7 @@ namespace Ninject.Syntax
         /// Gets the context.
         /// </summary>
         /// <value>The context.</value>
+        [NotNull]
         IContext Context { get; }
 
         /// <summary>

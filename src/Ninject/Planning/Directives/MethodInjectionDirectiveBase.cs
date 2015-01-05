@@ -11,6 +11,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using JetBrains.Annotations;
 using Ninject.Infrastructure;
 using Ninject.Planning.Targets;
 #endregion
@@ -26,11 +27,13 @@ namespace Ninject.Planning.Directives
         /// <summary>
         /// Gets or sets the injector that will be triggered.
         /// </summary>
+        [NotNull]
         public TInjector Injector { get; private set; }
 
         /// <summary>
         /// Gets or sets the targets for the directive.
         /// </summary>
+        [NotNull]
         public ITarget[] Targets { get; private set; }
 
         /// <summary>
@@ -38,7 +41,7 @@ namespace Ninject.Planning.Directives
         /// </summary>
         /// <param name="method">The method this directive represents.</param>
         /// <param name="injector">The injector that will be triggered.</param>
-        protected MethodInjectionDirectiveBase(TMethod method, TInjector injector)
+        protected MethodInjectionDirectiveBase([NotNull] TMethod method, [NotNull] TInjector injector)
         {
             Ensure.ArgumentNotNull(method, "method");
             Ensure.ArgumentNotNull(injector, "injector");
@@ -52,7 +55,8 @@ namespace Ninject.Planning.Directives
         /// </summary>
         /// <param name="method">The method.</param>
         /// <returns>The targets for the method's parameters.</returns>
-        protected virtual ITarget[] CreateTargetsFromParameters(TMethod method)
+        [NotNull]
+        protected virtual ITarget[] CreateTargetsFromParameters([NotNull] TMethod method)
         {
             return method.GetParameters().Select(parameter => new ParameterTarget(method, parameter)).ToArray();
         }

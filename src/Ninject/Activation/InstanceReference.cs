@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Ninject.Parameters;
 using Ninject.Planning;
 using Ninject.Planning.Bindings;
@@ -25,6 +26,7 @@ namespace Ninject.Activation
         /// <summary>
         /// Gets or sets the instance.
         /// </summary>
+        [NotNull]
         public object Instance { get; set; }
 
         /// <summary>
@@ -67,7 +69,7 @@ namespace Ninject.Activation
         /// </summary>
         /// <typeparam name="T">The type in question.</typeparam>
         /// <param name="action">The action to execute.</param>
-        public void IfInstanceIs<T>(Action<T> action)
+        public void IfInstanceIs<T>([NotNull] Action<T> action)
         {
             if (this.Is<T>())
                 action((T)Instance);

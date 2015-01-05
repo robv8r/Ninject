@@ -9,6 +9,7 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 using Ninject.Infrastructure;
 using Ninject.Syntax;
 #endregion
@@ -23,19 +24,20 @@ namespace Ninject.Modules
         /// <summary>
         /// Gets the module's name.
         /// </summary>
+        [NotNull]
         string Name { get; }
 
         /// <summary>
         /// Called when the module is loaded into a kernel.
         /// </summary>
         /// <param name="kernel">The kernel that is loading the module.</param>
-        void OnLoad(IKernel kernel);
+        void OnLoad([NotNull] IKernel kernel);
 
         /// <summary>
         /// Called when the module is unloaded from a kernel.
         /// </summary>
         /// <param name="kernel">The kernel that is unloading the module.</param>
-        void OnUnload(IKernel kernel);
+        void OnUnload([NotNull] IKernel kernel);
 
         /// <summary>
         /// Called after loading the modules. A module can verify here if all other required modules are loaded.

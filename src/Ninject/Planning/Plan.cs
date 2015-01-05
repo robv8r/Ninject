@@ -11,6 +11,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using Ninject.Infrastructure;
 using Ninject.Planning.Directives;
 #endregion
@@ -30,13 +31,14 @@ namespace Ninject.Planning
         /// <summary>
         /// Gets the directives defined in the plan.
         /// </summary>
+        [NotNull]
         public ICollection<IDirective> Directives { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Plan"/> class.
         /// </summary>
         /// <param name="type">The type the plan describes.</param>
-        public Plan(Type type)
+        public Plan([NotNull] Type type)
         {
             Ensure.ArgumentNotNull(type, "type");
 

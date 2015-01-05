@@ -23,6 +23,7 @@ namespace Ninject.Infrastructure.Language
 {
     using System;
     using System.Collections.Generic;
+    using JetBrains.Annotations;
 
     /// <summary>
     /// Extension methods for type
@@ -35,7 +36,8 @@ namespace Ninject.Infrastructure.Language
         /// </summary>
         /// <param name="type">The type.</param>
         /// <returns>An enumerable containing the given type and all its base types</returns>
-         public static IEnumerable<Type> GetAllBaseTypes(this Type type)
+         [NotNull]
+         public static IEnumerable<Type> GetAllBaseTypes([CanBeNull] this Type type)
          {
              while (type != null)
              {

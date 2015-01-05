@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Reflection;
+using JetBrains.Annotations;
 using Ninject.Components;
 using Ninject.Infrastructure;
 using Ninject.Injection;
@@ -27,11 +28,13 @@ namespace Ninject.Planning.Strategies
         /// <summary>
         /// Gets the selector component.
         /// </summary>
+        [NotNull]
         public ISelector Selector { get; private set; }
 
         /// <summary>
         /// Gets the injector factory component.
         /// </summary>
+        [NotNull]
         public IInjectorFactory InjectorFactory { get; set; }
 
         /// <summary>
@@ -39,7 +42,7 @@ namespace Ninject.Planning.Strategies
         /// </summary>
         /// <param name="selector">The selector component.</param>
         /// <param name="injectorFactory">The injector factory component.</param>
-        public PropertyReflectionStrategy(ISelector selector, IInjectorFactory injectorFactory)
+        public PropertyReflectionStrategy([NotNull] ISelector selector, [NotNull] IInjectorFactory injectorFactory)
         {
             Ensure.ArgumentNotNull(selector, "selector");
             Ensure.ArgumentNotNull(injectorFactory, "injectorFactory");

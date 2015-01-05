@@ -9,6 +9,7 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 using Ninject.Activation;
 using Ninject.Infrastructure;
 #endregion
@@ -35,6 +36,7 @@ namespace Ninject.Parameters
         /// <summary>
         /// Gets or sets the callback that will be triggered to get the parameter's value.
         /// </summary>
+        [NotNull]
         public Func<IContext, ITarget, object> ValueCallback { get; internal set; }
 
         /// <summary>
@@ -43,7 +45,7 @@ namespace Ninject.Parameters
         /// <param name="name">The name of the parameter.</param>
         /// <param name="value">The value of the parameter.</param>
         /// <param name="shouldInherit">Whether the parameter should be inherited into child requests.</param>
-        public Parameter(string name, object value, bool shouldInherit) : this(name, (ctx, target) => value, shouldInherit) { }
+        public Parameter([NotNull] string name, [CanBeNull] object value, bool shouldInherit) : this(name, (ctx, target) => value, shouldInherit) { }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Parameter"/> class.
@@ -51,7 +53,7 @@ namespace Ninject.Parameters
         /// <param name="name">The name of the parameter.</param>
         /// <param name="valueCallback">The callback that will be triggered to get the parameter's value.</param>
         /// <param name="shouldInherit">Whether the parameter should be inherited into child requests.</param>
-        public Parameter(string name, Func<IContext, object> valueCallback, bool shouldInherit)
+        public Parameter([NotNull] string name, [NotNull] Func<IContext, object> valueCallback, bool shouldInherit)
         {
             Ensure.ArgumentNotNullOrEmpty(name, "name");
             Ensure.ArgumentNotNull(valueCallback, "valueCallback");
@@ -67,7 +69,7 @@ namespace Ninject.Parameters
         /// <param name="name">The name of the parameter.</param>
         /// <param name="valueCallback">The callback that will be triggered to get the parameter's value.</param>
         /// <param name="shouldInherit">Whether the parameter should be inherited into child requests.</param>
-        public Parameter(string name, Func<IContext, ITarget, object> valueCallback, bool shouldInherit)
+        public Parameter([NotNull] string name, [NotNull] Func<IContext, ITarget, object> valueCallback, bool shouldInherit)
         {
             Ensure.ArgumentNotNullOrEmpty(name, "name");
             Ensure.ArgumentNotNull(valueCallback, "valueCallback");

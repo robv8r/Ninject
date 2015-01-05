@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Reflection;
+using JetBrains.Annotations;
 using Ninject.Activation;
 using Ninject.Planning.Bindings;
 #endregion
@@ -24,21 +25,25 @@ namespace Ninject.Planning.Targets
         /// <summary>
         /// Gets the type of the target.
         /// </summary>
+        [NotNull]
         Type Type { get; }
 
         /// <summary>
         /// Gets the name of the target.
         /// </summary>
+        [NotNull]
         string Name { get; }
 
         /// <summary>
         /// Gets the member that contains the target.
         /// </summary>
+        [NotNull]
         MemberInfo Member { get; }
 
         /// <summary>
         /// Gets the constraint defined on the target.
         /// </summary>
+        [NotNull]
         Func<IBindingMetadata, bool> Constraint { get; }
 
         /// <summary>
@@ -55,6 +60,7 @@ namespace Ninject.Planning.Targets
         /// Gets the default value for the target.
         /// </summary>
         /// <exception cref="System.InvalidOperationException">If the item does not have a default value.</exception>
+        [CanBeNull]
         object DefaultValue { get; }
 
         /// <summary>
@@ -62,6 +68,7 @@ namespace Ninject.Planning.Targets
         /// </summary>
         /// <param name="parent">The parent context.</param>
         /// <returns>The resolved value.</returns>
-        object ResolveWithin(IContext parent);
+        [CanBeNull]
+        object ResolveWithin([NotNull] IContext parent);
     }
 }

@@ -12,6 +12,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using JetBrains.Annotations;
 using Ninject.Activation;
 using Ninject.Planning.Bindings;
 using Ninject.Planning.Targets;
@@ -31,7 +32,8 @@ namespace Ninject.Infrastructure.Introspection
         /// </summary>
         /// <param name="request">The request to be formatted.</param>
         /// <returns>The activation path formatted as string.</returns>
-        public static string FormatActivationPath(this IRequest request)
+        [NotNull]
+        public static string FormatActivationPath([NotNull] this IRequest request)
         {
             using (var sw = new StringWriter())
             {
@@ -53,7 +55,8 @@ namespace Ninject.Infrastructure.Introspection
         /// <param name="binding">The binding to be formatted.</param>
         /// <param name="context">The context.</param>
         /// <returns>The binding formatted as string</returns>
-        public static string Format(this IBinding binding, IContext context)
+        [NotNull]
+        public static string Format([NotNull] this IBinding binding, [NotNull] IContext context)
         {
             using (var sw = new StringWriter())
             {
@@ -101,7 +104,8 @@ namespace Ninject.Infrastructure.Introspection
         /// </summary>
         /// <param name="request">The request to be formatted.</param>
         /// <returns>The request formatted as string.</returns>
-        public static string Format(this IRequest request)
+        [NotNull]
+        public static string Format([NotNull] this IRequest request)
         {
             using (var sw = new StringWriter())
             {
@@ -119,7 +123,8 @@ namespace Ninject.Infrastructure.Introspection
         /// </summary>
         /// <param name="target">The target to be formatted.</param>
         /// <returns>The target formatted as string.</returns>
-        public static string Format(this ITarget target)
+        [NotNull]
+        public static string Format([NotNull] this ITarget target)
         {
             using (var sw = new StringWriter())
             {
@@ -152,7 +157,8 @@ namespace Ninject.Infrastructure.Introspection
         /// </summary>
         /// <param name="type">The type to be formatted.</param>
         /// <returns>The type formatted as string.</returns>
-        public static string Format(this Type type)
+        [NotNull]
+        public static string Format([NotNull] this Type type)
         {
             var friendlyName = GetFriendlyName(type);
 

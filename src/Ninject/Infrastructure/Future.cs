@@ -9,6 +9,7 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 using Ninject.Planning.Bindings;
 #endregion
 
@@ -26,6 +27,7 @@ namespace Ninject.Infrastructure
         /// <summary>
         /// Gets the value, resolving it if necessary.
         /// </summary>
+        [NotNull]
         public T Value
         {
             get
@@ -43,13 +45,14 @@ namespace Ninject.Infrastructure
         /// <summary>
         /// Gets the callback that will be called to resolve the value.
         /// </summary>
+        [NotNull] 
         public Func<T> Callback { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the Future&lt;T&gt; class.
         /// </summary>
         /// <param name="callback">The callback that will be triggered to read the value.</param>
-        public Future(Func<T> callback)
+        public Future([NotNull] Func<T> callback)
         {
             Callback = callback;
         }
@@ -59,7 +62,7 @@ namespace Ninject.Infrastructure
         /// </summary>
         /// <param name="future">The future.</param>
         /// <returns>The future value.</returns>
-        public static implicit operator T(Future<T> future)
+        public static implicit operator T([NotNull] Future<T> future)
         {
             return future.Value;
         }

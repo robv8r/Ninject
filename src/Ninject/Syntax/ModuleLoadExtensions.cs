@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Reflection;
+using JetBrains.Annotations;
 using Ninject.Infrastructure;
 using Ninject.Modules;
 #endregion
@@ -26,7 +27,7 @@ namespace Ninject
         /// </summary>
         /// <typeparam name="TModule">The type of the module.</typeparam>
         /// <param name="kernel">The kernel.</param>
-        public static void Load<TModule>(this IKernel kernel)
+        public static void Load<TModule>([NotNull] this IKernel kernel)
             where TModule : INinjectModule, new()
         {
             Ensure.ArgumentNotNull(kernel, "kernel");
@@ -38,7 +39,7 @@ namespace Ninject
         /// </summary>
         /// <param name="kernel">The kernel.</param>
         /// <param name="modules">The modules to load.</param>
-        public static void Load(this IKernel kernel, params INinjectModule[] modules)
+        public static void Load([NotNull] this IKernel kernel, [NotNull] params INinjectModule[] modules)
         {
             kernel.Load(modules);
         }
@@ -49,7 +50,7 @@ namespace Ninject
         /// </summary>
         /// <param name="kernel">The kernel.</param>
         /// <param name="filePatterns">The file patterns (i.e. "*.dll", "modules/*.rb") to match.</param>
-        public static void Load(this IKernel kernel, params string[] filePatterns)
+        public static void Load([NotNull] this IKernel kernel, [NotNull] params string[] filePatterns)
         {
             kernel.Load(filePatterns);
         }
@@ -59,7 +60,7 @@ namespace Ninject
         /// </summary>
         /// <param name="kernel">The kernel.</param>
         /// <param name="assemblies">The assemblies to search.</param>
-        public static void Load(this IKernel kernel, params Assembly[] assemblies)
+        public static void Load([NotNull] this IKernel kernel, [NotNull] params Assembly[] assemblies)
         {
             kernel.Load(assemblies);
         }

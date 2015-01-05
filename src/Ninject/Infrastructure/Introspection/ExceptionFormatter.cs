@@ -28,6 +28,7 @@ namespace Ninject.Infrastructure.Introspection
     using System.Linq;
     using System.Reflection;
 
+    using JetBrains.Annotations;
     using Ninject.Activation;
     using Ninject.Modules;
     using Ninject.Planning.Directives;
@@ -42,6 +43,7 @@ namespace Ninject.Infrastructure.Introspection
         /// Generates a message saying that modules without names are not supported.
         /// </summary>
         /// <returns>The exception message.</returns>
+        [NotNull]
         public static string ModulesWithNullOrEmptyNamesAreNotSupported()
         {
             return "Modules with null or empty names are not supported";
@@ -51,7 +53,8 @@ namespace Ninject.Infrastructure.Introspection
         /// Generates a message saying that modules without names are not supported.
         /// </summary>
         /// <returns>The exception message.</returns>
-        public static string TargetDoesNotHaveADefaultValue(ITarget target)
+        [NotNull]
+        public static string TargetDoesNotHaveADefaultValue([NotNull] ITarget target)
         {
             return string.Format("Target '{0}' at site '{1}' does not have a default value.", target.Member, target.Name);
         }
@@ -62,7 +65,8 @@ namespace Ninject.Infrastructure.Introspection
         /// <param name="newModule">The new module.</param>
         /// <param name="existingModule">The existing module.</param>
         /// <returns>The exception message.</returns>
-        public static string ModuleWithSameNameIsAlreadyLoaded(INinjectModule newModule, INinjectModule existingModule)
+        [NotNull]
+        public static string ModuleWithSameNameIsAlreadyLoaded([NotNull] INinjectModule newModule, [NotNull] INinjectModule existingModule)
         {
             using (var sw = new StringWriter())
             {
@@ -85,7 +89,8 @@ namespace Ninject.Infrastructure.Introspection
         /// </summary>
         /// <param name="name">The module name.</param>
         /// <returns>The exception message.</returns>
-        public static string NoModuleLoadedWithTheSpecifiedName(string name)
+        [NotNull]
+        public static string NoModuleLoadedWithTheSpecifiedName([NotNull] string name)
         {
             using (var sw = new StringWriter())
             {
@@ -105,7 +110,8 @@ namespace Ninject.Infrastructure.Introspection
         /// <param name="request">The request.</param>
         /// <param name="formattedMatchingBindings">The matching bindings, already formatted as strings</param>
         /// <returns>The exception message.</returns>
-        public static string CouldNotUniquelyResolveBinding(IRequest request, string[] formattedMatchingBindings)
+        [NotNull]
+        public static string CouldNotUniquelyResolveBinding([NotNull] IRequest request, [NotNull] string[] formattedMatchingBindings)
         {
             using (var sw = new StringWriter())
             {
@@ -132,7 +138,8 @@ namespace Ninject.Infrastructure.Introspection
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns>The exception message.</returns>
-        public static string CouldNotResolveBinding(IRequest request)
+        [NotNull]
+        public static string CouldNotResolveBinding([NotNull] IRequest request)
         {
             using (var sw = new StringWriter())
             {
@@ -160,7 +167,8 @@ namespace Ninject.Infrastructure.Introspection
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns>The exception message.</returns>
-        public static string CyclicalDependenciesDetected(IContext context)
+        [NotNull]
+        public static string CyclicalDependenciesDetected([NotNull] IContext context)
         {
             using (var sw = new StringWriter())
             {
@@ -188,7 +196,8 @@ namespace Ninject.Infrastructure.Introspection
         /// <param name="methodName">Name of the method.</param>
         /// <param name="type">The type.</param>
         /// <returns>The exception message.</returns>
-        public static string InvalidAttributeTypeUsedInBindingCondition(string serviceNames, string methodName, Type type)
+        [NotNull]
+        public static string InvalidAttributeTypeUsedInBindingCondition([NotNull] string serviceNames, [NotNull] string methodName, [NotNull] Type type)
         {
             using (var sw = new StringWriter())
             {
@@ -211,7 +220,8 @@ namespace Ninject.Infrastructure.Introspection
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns>The exception message.</returns>
-        public static string NoConstructorsAvailable(IContext context)
+        [NotNull]
+        public static string NoConstructorsAvailable([NotNull] IContext context)
         {
             using (var sw = new StringWriter())
             {
@@ -236,7 +246,8 @@ namespace Ninject.Infrastructure.Introspection
         /// <param name="component">The component.</param>
         /// <param name="implementation">The implementation.</param>
         /// <returns>The exception message.</returns>
-        public static string NoConstructorsAvailableForComponent(Type component, Type implementation)
+        [NotNull]
+        public static string NoConstructorsAvailableForComponent([NotNull] Type component, [NotNull] Type implementation)
         {
             using (var sw = new StringWriter())
             {
@@ -256,7 +267,8 @@ namespace Ninject.Infrastructure.Introspection
         /// </summary>
         /// <param name="component">The component.</param>
         /// <returns>The exception message.</returns>
-        public static string NoSuchComponentRegistered(Type component)
+        [NotNull]
+        public static string NoSuchComponentRegistered([NotNull] Type component)
         {
             using (var sw = new StringWriter())
             {
@@ -280,7 +292,8 @@ namespace Ninject.Infrastructure.Introspection
         /// <param name="request">The request.</param>
         /// <param name="propertyName">The property name.</param>
         /// <returns>The exception message.</returns>
-        public static string CouldNotResolvePropertyForValueInjection(IRequest request, string propertyName)
+        [NotNull]
+        public static string CouldNotResolvePropertyForValueInjection([NotNull] IRequest request, [NotNull] string propertyName)
         {
             using (var sw = new StringWriter())
             {
@@ -302,7 +315,8 @@ namespace Ninject.Infrastructure.Introspection
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns>The exception message.</returns>
-        public static string ProviderReturnedNull(IContext context)
+        [NotNull]
+        public static string ProviderReturnedNull([NotNull] IContext context)
         {
             using (var sw = new StringWriter())
             {
@@ -325,7 +339,8 @@ namespace Ninject.Infrastructure.Introspection
         /// <param name="context">The context.</param>
         /// <param name="bestDirectives">The best constructor directives.</param>
         /// <returns>The exception message.</returns>
-        public static string ConstructorsAmbiguous(IContext context, IGrouping<int, ConstructorInjectionDirective> bestDirectives)
+        [NotNull]
+        public static string ConstructorsAmbiguous([NotNull] IContext context, [NotNull] IGrouping<int, ConstructorInjectionDirective> bestDirectives)
         {
             using (var sw = new StringWriter())
             {

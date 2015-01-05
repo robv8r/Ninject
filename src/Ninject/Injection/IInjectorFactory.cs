@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Reflection;
+using JetBrains.Annotations;
 using Ninject.Components;
 #endregion
 
@@ -25,20 +26,23 @@ namespace Ninject.Injection
         /// </summary>
         /// <param name="constructor">The constructor.</param>
         /// <returns>The created injector.</returns>
-        ConstructorInjector Create(ConstructorInfo constructor);
+        [NotNull]
+        ConstructorInjector Create([NotNull] ConstructorInfo constructor);
 
         /// <summary>
         /// Gets or creates an injector for the specified property.
         /// </summary>
         /// <param name="property">The property.</param>
         /// <returns>The created injector.</returns>
-        PropertyInjector Create(PropertyInfo property);
+        [NotNull]
+        PropertyInjector Create([NotNull] PropertyInfo property);
 
         /// <summary>
         /// Gets or creates an injector for the specified method.
         /// </summary>
         /// <param name="method">The method.</param>
         /// <returns>The created injector.</returns>
-        MethodInjector Create(MethodInfo method);
+        [NotNull]
+        MethodInjector Create([NotNull] MethodInfo method);
     }
 }

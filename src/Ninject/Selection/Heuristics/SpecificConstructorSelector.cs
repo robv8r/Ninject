@@ -20,6 +20,7 @@
 namespace Ninject.Selection.Heuristics
 {
     using System.Reflection;
+    using JetBrains.Annotations;
     using Ninject.Activation;
     using Ninject.Components;
     using Ninject.Planning.Directives;
@@ -35,7 +36,7 @@ namespace Ninject.Selection.Heuristics
         /// Initializes a new instance of the <see cref="SpecificConstructorSelector"/> class.
         /// </summary>
         /// <param name="constructorInfo">The constructor info of the constructor that shall be selected.</param>
-        public SpecificConstructorSelector(ConstructorInfo constructorInfo)
+        public SpecificConstructorSelector([NotNull] ConstructorInfo constructorInfo)
         {
             this.constructorInfo = constructorInfo;
         }

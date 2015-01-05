@@ -23,6 +23,8 @@
 
 namespace Ninject.Syntax
 {
+    using JetBrains.Annotations;
+
     /// <summary>
     /// Used to define the name of a binding.
     /// </summary>
@@ -35,6 +37,7 @@ namespace Ninject.Syntax
         /// </summary>
         /// <param name="name">The name to give the binding.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingWithOrOnSyntax<T> Named(string name);
+        [NotNull]
+        IBindingWithOrOnSyntax<T> Named([NotNull] string name);
     }
 }

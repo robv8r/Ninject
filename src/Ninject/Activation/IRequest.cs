@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Ninject.Parameters;
 using Ninject.Planning.Bindings;
 using Ninject.Planning.Targets;
@@ -26,36 +27,43 @@ namespace Ninject.Activation
         /// <summary>
         /// Gets the service that was requested.
         /// </summary>
+        [NotNull]
         Type Service { get; }
 
         /// <summary>
         /// Gets the parent request.
         /// </summary>
+        [CanBeNull]
         IRequest ParentRequest { get; }
 
         /// <summary>
         /// Gets the parent context.
         /// </summary>
+        [CanBeNull]
         IContext ParentContext { get; }
 
         /// <summary>
         /// Gets the target that will receive the injection, if any.
         /// </summary>
+        [CanBeNull]
         ITarget Target { get; }
 
         /// <summary>
         /// Gets the constraint that will be applied to filter the bindings used for the request.
         /// </summary>
+        [CanBeNull]
         Func<IBindingMetadata, bool> Constraint { get; }
 
         /// <summary>
         /// Gets the parameters that affect the resolution.
         /// </summary>
+        [NotNull]
         ICollection<IParameter> Parameters { get; }
 
         /// <summary>
         /// Gets the stack of bindings which have been activated by either this request or its ancestors.
         /// </summary>
+        [NotNull]
         Stack<IBinding> ActiveBindings { get; }
 
         /// <summary>
@@ -89,7 +97,7 @@ namespace Ninject.Activation
         /// </summary>
         /// <param name="binding">The binding.</param>
         /// <returns><c>True</c> if the binding satisfies the constraint; otherwise <c>false</c>.</returns>
-        bool Matches(IBinding binding);
+        bool Matches([NotNull] IBinding binding);
 
         /// <summary>
         /// Gets the scope if one was specified in the request.
@@ -104,6 +112,6 @@ namespace Ninject.Activation
         /// <param name="parentContext">The context in which the request was made.</param>
         /// <param name="target">The target that will receive the injection.</param>
         /// <returns>The child request.</returns>
-        IRequest CreateChild(Type service, IContext parentContext, ITarget target);
+        IRequest CreateChild([NotNull] Type service, [NotNull] IContext parentContext, [NotNull] ITarget target);
     }
 }

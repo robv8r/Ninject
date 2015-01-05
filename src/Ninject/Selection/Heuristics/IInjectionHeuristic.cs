@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Reflection;
+using JetBrains.Annotations;
 using Ninject.Components;
 #endregion
 
@@ -25,6 +26,6 @@ namespace Ninject.Selection.Heuristics
         /// </summary>
         /// <param name="member">The member in question.</param>
         /// <returns><c>True</c> if the member should be injected; otherwise <c>false</c>.</returns>
-        bool ShouldInject(MemberInfo member);
+        bool ShouldInject([NotNull] MemberInfo member);
     }
 }

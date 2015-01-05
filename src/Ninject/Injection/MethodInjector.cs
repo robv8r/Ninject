@@ -9,8 +9,10 @@
 #endregion
 namespace Ninject.Injection
 {
+    using JetBrains.Annotations;
+
     /// <summary>
     /// A delegate that can inject values into a method.
     /// </summary>
-    public delegate void MethodInjector(object target, params object[] arguments);
+    public delegate void MethodInjector([NotNull] object target, [NotNull] params object[] arguments);
 }

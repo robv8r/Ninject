@@ -25,6 +25,7 @@ namespace Ninject.Syntax
 {
     using System;
 
+    using JetBrains.Annotations;
     using Ninject.Activation;
 
     /// <summary>
@@ -38,7 +39,8 @@ namespace Ninject.Syntax
         /// </summary>
         /// <param name="condition">The condition.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingInNamedWithOrOnSyntax<T> When(Func<IRequest, bool> condition);
+        [NotNull]
+        IBindingInNamedWithOrOnSyntax<T> When([NotNull] Func<IRequest, bool> condition);
 
         /// <summary>
         /// Indicates that the binding should be used only for injections on the specified type.
@@ -46,6 +48,7 @@ namespace Ninject.Syntax
         /// </summary>
         /// <typeparam name="TParent">The type.</typeparam>
         /// <returns>The fluent syntax.</returns>
+        [NotNull]
         IBindingInNamedWithOrOnSyntax<T> WhenInjectedInto<TParent>();
 
         /// <summary>
@@ -54,7 +57,8 @@ namespace Ninject.Syntax
         /// </summary>
         /// <param name="parent">The type.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingInNamedWithOrOnSyntax<T> WhenInjectedInto(Type parent);
+        [NotNull]
+        IBindingInNamedWithOrOnSyntax<T> WhenInjectedInto([NotNull] Type parent);
 
         /// <summary>
         /// Indicates that the binding should be used only for injections on the specified types.
@@ -63,7 +67,8 @@ namespace Ninject.Syntax
         /// </summary>
         /// <param name="parents">The types to match.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingInNamedWithOrOnSyntax<T> WhenInjectedInto(params Type[] parents);
+        [NotNull]
+        IBindingInNamedWithOrOnSyntax<T> WhenInjectedInto([NotNull] params Type[] parents);
 
         /// <summary>
         /// Indicates that the binding should be used only for injections on the specified type.
@@ -72,6 +77,7 @@ namespace Ninject.Syntax
         /// </summary>
         /// <typeparam name="TParent">The type.</typeparam>
         /// <returns>The fluent syntax.</returns>
+        [NotNull]
         IBindingInNamedWithOrOnSyntax<T> WhenInjectedExactlyInto<TParent>();
 
         /// <summary>
@@ -81,7 +87,8 @@ namespace Ninject.Syntax
         /// </summary>
         /// <param name="parent">The type.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingInNamedWithOrOnSyntax<T> WhenInjectedExactlyInto(Type parent);
+        [NotNull]
+        IBindingInNamedWithOrOnSyntax<T> WhenInjectedExactlyInto([NotNull] Type parent);
 
         /// <summary>
         /// Indicates that the binding should be used only for injections on the specified type.
@@ -91,7 +98,8 @@ namespace Ninject.Syntax
         /// </summary>
         /// <param name="parents">The types.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingInNamedWithOrOnSyntax<T> WhenInjectedExactlyInto(params Type[] parents);
+        [NotNull]
+        IBindingInNamedWithOrOnSyntax<T> WhenInjectedExactlyInto([NotNull] params Type[] parents);
 
         /// <summary>
         /// Indicates that the binding should be used only when the class being injected has
@@ -99,6 +107,7 @@ namespace Ninject.Syntax
         /// </summary>
         /// <typeparam name="TAttribute">The type of attribute.</typeparam>
         /// <returns>The fluent syntax.</returns>
+        [NotNull]
         IBindingInNamedWithOrOnSyntax<T> WhenClassHas<TAttribute>() where TAttribute : Attribute;
 
         /// <summary>
@@ -107,6 +116,7 @@ namespace Ninject.Syntax
         /// </summary>
         /// <typeparam name="TAttribute">The type of attribute.</typeparam>
         /// <returns>The fluent syntax.</returns>
+        [NotNull]
         IBindingInNamedWithOrOnSyntax<T> WhenMemberHas<TAttribute>() where TAttribute : Attribute;
 
         /// <summary>
@@ -115,6 +125,7 @@ namespace Ninject.Syntax
         /// </summary>
         /// <typeparam name="TAttribute">The type of attribute.</typeparam>
         /// <returns>The fluent syntax.</returns>
+        [NotNull]
         IBindingInNamedWithOrOnSyntax<T> WhenTargetHas<TAttribute>() where TAttribute : Attribute;
 
         /// <summary>
@@ -123,7 +134,8 @@ namespace Ninject.Syntax
         /// </summary>
         /// <param name="attributeType">The type of attribute.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingInNamedWithOrOnSyntax<T> WhenClassHas(Type attributeType);
+        [NotNull]
+        IBindingInNamedWithOrOnSyntax<T> WhenClassHas([NotNull] Type attributeType);
 
         /// <summary>
         /// Indicates that the binding should be used only when the member being injected has
@@ -131,7 +143,8 @@ namespace Ninject.Syntax
         /// </summary>
         /// <param name="attributeType">The type of attribute.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingInNamedWithOrOnSyntax<T> WhenMemberHas(Type attributeType);
+        [NotNull]
+        IBindingInNamedWithOrOnSyntax<T> WhenMemberHas([NotNull] Type attributeType);
 
         /// <summary>
         /// Indicates that the binding should be used only when the target being injected has
@@ -139,7 +152,8 @@ namespace Ninject.Syntax
         /// </summary>
         /// <param name="attributeType">The type of attribute.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingInNamedWithOrOnSyntax<T> WhenTargetHas(Type attributeType);
+        [NotNull]
+        IBindingInNamedWithOrOnSyntax<T> WhenTargetHas([NotNull] Type attributeType);
 
         /// <summary>
         /// Indicates that the binding should be used only when the service is being requested
@@ -147,7 +161,8 @@ namespace Ninject.Syntax
         /// </summary>
         /// <param name="name">The name to expect.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingInNamedWithOrOnSyntax<T> WhenParentNamed(string name);
+        [NotNull]
+        IBindingInNamedWithOrOnSyntax<T> WhenParentNamed([NotNull] string name);
 
         /// <summary>
         /// Indicates that the binding should be used only when any ancestor is bound with the specified name.
@@ -155,34 +170,39 @@ namespace Ninject.Syntax
         /// <param name="name">The name to expect.</param>
         /// <returns>The fluent syntax.</returns>
         [Obsolete("Use WhenAnyAncestorNamed(string name)")]
-        IBindingInNamedWithOrOnSyntax<T> WhenAnyAnchestorNamed(string name);
+        [NotNull]
+        IBindingInNamedWithOrOnSyntax<T> WhenAnyAnchestorNamed([NotNull] string name);
 
         /// <summary>
         /// Indicates that the binding should be used only when any ancestor is bound with the specified name.
         /// </summary>
         /// <param name="name">The name to expect.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingInNamedWithOrOnSyntax<T> WhenAnyAncestorNamed(string name);
+        [NotNull]
+        IBindingInNamedWithOrOnSyntax<T> WhenAnyAncestorNamed([NotNull] string name);
 
         /// <summary>
         /// Indicates that the binding should be used only when no ancestor is bound with the specified name.
         /// </summary>
         /// <param name="name">The name to expect.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingInNamedWithOrOnSyntax<T> WhenNoAncestorNamed(string name);
+        [NotNull]
+        IBindingInNamedWithOrOnSyntax<T> WhenNoAncestorNamed([NotNull] string name);
     
         /// <summary>
         /// Indicates that the binding should be used only when any ancestor matches the specified predicate.
         /// </summary>
         /// <param name="predicate">The predicate to match.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingInNamedWithOrOnSyntax<T> WhenAnyAncestorMatches(Predicate<IContext> predicate);
+        [NotNull]
+        IBindingInNamedWithOrOnSyntax<T> WhenAnyAncestorMatches([NotNull] Predicate<IContext> predicate);
 
         /// <summary>
         /// Indicates that the binding should be used only when no ancestor matches the specified predicate.
         /// </summary>
         /// <param name="predicate">The predicate to match.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingInNamedWithOrOnSyntax<T> WhenNoAncestorMatches(Predicate<IContext> predicate);
+        [NotNull]
+        IBindingInNamedWithOrOnSyntax<T> WhenNoAncestorMatches([NotNull] Predicate<IContext> predicate);
     }
 }

@@ -11,6 +11,7 @@
 #region Using Directives
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Ninject.Components;
 #endregion
 
@@ -25,7 +26,7 @@ namespace Ninject.Modules
         /// Loads any modules found in the files that match the specified patterns.
         /// </summary>
         /// <param name="patterns">The patterns to search.</param>
-        void LoadModules(IEnumerable<string> patterns);
+        void LoadModules([NotNull] IEnumerable<string> patterns);
     }
 }
 #endif

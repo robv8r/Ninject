@@ -1,6 +1,7 @@
 namespace Ninject.Infrastructure
 {
     using System;
+    using JetBrains.Annotations;
 
     /// <summary>
     /// Inheritable weak reference base class for Silverlight
@@ -44,6 +45,7 @@ namespace Ninject.Infrastructure
         /// Gets or sets the target of this weak reference.
         /// </summary>
         /// <value>The target of this weak reference.</value>
+        [NotNull]
         public object Target
         {
             get

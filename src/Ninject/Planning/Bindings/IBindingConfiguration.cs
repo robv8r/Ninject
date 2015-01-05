@@ -23,6 +23,7 @@ namespace Ninject.Planning.Bindings
 {
     using System;
     using System.Collections.Generic;
+    using JetBrains.Annotations;
     using Ninject.Activation;
     using Ninject.Parameters;
 
@@ -34,6 +35,7 @@ namespace Ninject.Planning.Bindings
         /// <summary>
         /// Gets the binding's metadata.
         /// </summary>
+        [NotNull]
         IBindingMetadata Metadata { get; }
 
         /// <summary>
@@ -59,26 +61,31 @@ namespace Ninject.Planning.Bindings
         /// <summary>
         /// Gets or sets the callback that returns the provider that should be used by the binding.
         /// </summary>
+        [NotNull]
         Func<IContext, IProvider> ProviderCallback { get; set; }
 
         /// <summary>
         /// Gets or sets the callback that returns the object that will act as the binding's scope.
         /// </summary>
+        [NotNull]
         Func<IContext, object> ScopeCallback { get; set; }
 
         /// <summary>
         /// Gets the parameters defined for the binding.
         /// </summary>
+        [NotNull]
         ICollection<IParameter> Parameters { get; }
 
         /// <summary>
         /// Gets the actions that should be called after instances are activated via the binding.
         /// </summary>
+        [NotNull]
         ICollection<Action<IContext, object>> ActivationActions { get; }
 
         /// <summary>
         /// Gets the actions that should be called before instances are deactivated via the binding.
         /// </summary>
+        [NotNull]
         ICollection<Action<IContext, object>> DeactivationActions { get; }
 
         /// <summary>
@@ -86,14 +93,16 @@ namespace Ninject.Planning.Bindings
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns>The provider to use.</returns>
-        IProvider GetProvider(IContext context);
+        [NotNull]
+        IProvider GetProvider([NotNull] IContext context);
 
         /// <summary>
         /// Gets the scope for the binding, if any.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns>The object that will act as the scope, or <see langword="null"/> if the service is transient.</returns>
-        object GetScope(IContext context);
+        [CanBeNull]
+        object GetScope([NotNull] IContext context);
 
         /// <summary>
         /// Determines whether the specified request satisfies the condition defined on the binding,
@@ -101,6 +110,6 @@ namespace Ninject.Planning.Bindings
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns><c>True</c> if the request satisfies the condition; otherwise <c>false</c>.</returns>
-        bool Matches(IRequest request);        
+        bool Matches([NotNull] IRequest request);        
     }
 }

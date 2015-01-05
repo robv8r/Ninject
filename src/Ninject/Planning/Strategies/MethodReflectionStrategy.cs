@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Reflection;
+using JetBrains.Annotations;
 using Ninject.Components;
 using Ninject.Infrastructure;
 using Ninject.Injection;
@@ -39,7 +40,7 @@ namespace Ninject.Planning.Strategies
         /// </summary>
         /// <param name="selector">The selector component.</param>
         /// <param name="injectorFactory">The injector factory component.</param>
-        public MethodReflectionStrategy(ISelector selector, IInjectorFactory injectorFactory)
+        public MethodReflectionStrategy([NotNull] ISelector selector, [NotNull] IInjectorFactory injectorFactory)
         {
             Ensure.ArgumentNotNull(selector, "selector");
             Ensure.ArgumentNotNull(injectorFactory, "injectorFactory");

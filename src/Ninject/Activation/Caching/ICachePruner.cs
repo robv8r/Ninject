@@ -9,6 +9,7 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 using Ninject.Components;
 #endregion
 
@@ -23,7 +24,7 @@ namespace Ninject.Activation.Caching
         /// Starts pruning the specified cache based on the rules of the pruner.
         /// </summary>
         /// <param name="cache">The cache that will be pruned.</param>
-        void Start(IPruneable cache);
+        void Start([NotNull] IPruneable cache);
 
         /// <summary>
         /// Stops pruning.

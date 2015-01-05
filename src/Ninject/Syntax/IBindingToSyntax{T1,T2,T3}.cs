@@ -27,6 +27,7 @@ namespace Ninject.Syntax
 #if !NETCF
     using System.Linq.Expressions;
 #endif
+    using JetBrains.Annotations;
     using Ninject.Activation;
 
     /// <summary>
@@ -42,6 +43,7 @@ namespace Ninject.Syntax
         /// </summary>
         /// <typeparam name="TImplementation">The implementation type.</typeparam>
         /// <returns>The fluent syntax.</returns>
+        [NotNull]
         IBindingWhenInNamedWithOrOnSyntax<TImplementation> To<TImplementation>() 
             where TImplementation : T1, T2, T3;
 
@@ -50,7 +52,8 @@ namespace Ninject.Syntax
         /// </summary>
         /// <param name="implementation">The implementation type.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingWhenInNamedWithOrOnSyntax<object> To(Type implementation);
+        [NotNull]
+        IBindingWhenInNamedWithOrOnSyntax<object> To([NotNull] Type implementation);
 
         /// <summary>
         /// Indicates that the service should be bound to an instance of the specified provider type.
@@ -58,6 +61,7 @@ namespace Ninject.Syntax
         /// </summary>
         /// <typeparam name="TProvider">The type of provider to activate.</typeparam>
         /// <returns>The fluent syntax.</returns>
+        [NotNull]
         IBindingWhenInNamedWithOrOnSyntax<object> ToProvider<TProvider>() where TProvider : IProvider;
 
         /// <summary>
@@ -67,6 +71,7 @@ namespace Ninject.Syntax
         /// <typeparam name="TProvider">The type of provider to activate.</typeparam>
         /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
         /// <returns>The fluent syntax.</returns>
+        [NotNull]
         IBindingWhenInNamedWithOrOnSyntax<TImplementation> ToProvider<TProvider, TImplementation>() 
             where TProvider : IProvider<TImplementation>
             where TImplementation : T1, T2, T3;
@@ -77,7 +82,8 @@ namespace Ninject.Syntax
         /// </summary>
         /// <param name="providerType">The type of provider to activate.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingWhenInNamedWithOrOnSyntax<object> ToProvider(Type providerType);
+        [NotNull]
+        IBindingWhenInNamedWithOrOnSyntax<object> ToProvider([NotNull] Type providerType);
 
         /// <summary>
         /// Indicates that the service should be bound to the specified provider.
@@ -85,7 +91,8 @@ namespace Ninject.Syntax
         /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
         /// <param name="provider">The provider.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingWhenInNamedWithOrOnSyntax<TImplementation> ToProvider<TImplementation>(IProvider<TImplementation> provider)
+        [NotNull]
+        IBindingWhenInNamedWithOrOnSyntax<TImplementation> ToProvider<TImplementation>([NotNull] IProvider<TImplementation> provider)
             where TImplementation : T1, T2, T3;
 
         /// <summary>
@@ -94,8 +101,9 @@ namespace Ninject.Syntax
         /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
         /// <param name="method">The method.</param>
         /// <returns>The fluent syntax.</returns>
+        [NotNull]
         IBindingWhenInNamedWithOrOnSyntax<TImplementation> ToMethod<TImplementation>(
-            Func<IContext, TImplementation> method)
+            [NotNull] Func<IContext, TImplementation> method)
             where TImplementation : T1, T2, T3;
 
         /// <summary>
@@ -104,7 +112,8 @@ namespace Ninject.Syntax
         /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
         /// <param name="value">The constant value.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingWhenInNamedWithOrOnSyntax<TImplementation> ToConstant<TImplementation>(TImplementation value)
+        [NotNull]
+        IBindingWhenInNamedWithOrOnSyntax<TImplementation> ToConstant<TImplementation>([NotNull] TImplementation value)
             where TImplementation : T1, T2, T3;
 
 #if !NETCF
@@ -114,8 +123,9 @@ namespace Ninject.Syntax
         /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
         /// <param name="newExpression">The expression that specifies the constructor.</param>
         /// <returns>The fluent syntax.</returns>
+        [NotNull]
         IBindingWhenInNamedWithOrOnSyntax<TImplementation> ToConstructor<TImplementation>(
-            Expression<Func<IConstructorArgumentSyntax, TImplementation>> newExpression)
+            [NotNull] Expression<Func<IConstructorArgumentSyntax, TImplementation>> newExpression)
             where TImplementation : T1, T2, T3;
 #endif
     }

@@ -1,5 +1,6 @@
 namespace Ninject.Activation.Strategies
 {
+    using JetBrains.Annotations;
     using Ninject.Activation.Caching;
 
     /// <summary>
@@ -16,7 +17,7 @@ namespace Ninject.Activation.Strategies
         /// Initializes a new instance of the <see cref="ActivationCacheStrategy"/> class.
         /// </summary>
         /// <param name="activationCache">The activation cache.</param>
-        public ActivationCacheStrategy(IActivationCache activationCache)
+        public ActivationCacheStrategy([NotNull] IActivationCache activationCache)
         {
             this.activationCache = activationCache;
         }

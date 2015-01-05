@@ -9,8 +9,10 @@
 #endregion
 namespace Ninject.Injection
 {
+    using JetBrains.Annotations;
+
     /// <summary>
     /// A delegate that can inject values into a property.
     /// </summary>
-    public delegate void PropertyInjector(object target, object value);
+    public delegate void PropertyInjector([NotNull] object target, [NotNull] object value);
 }

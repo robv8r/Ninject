@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using JetBrains.Annotations;
 using Ninject.Infrastructure;
 using Ninject.Infrastructure.Introspection;
 using Ninject.Infrastructure.Language;
@@ -51,7 +52,7 @@ namespace Ninject.Activation.Strategies
         /// Initializes a new instance of the <see cref="PropertyInjectionStrategy"/> class.
         /// </summary>
         /// <param name="injectorFactory">The injector factory component.</param>
-        public PropertyInjectionStrategy(IInjectorFactory injectorFactory)
+        public PropertyInjectionStrategy([NotNull] IInjectorFactory injectorFactory)
         {
             this.InjectorFactory = injectorFactory;
         }
@@ -110,7 +111,7 @@ namespace Ninject.Activation.Strategies
         /// <param name="target">The target.</param>
         /// <param name="allPropertyValues">all property values of the current request.</param>
         /// <returns>The value to inject into the specified target.</returns>
-        private object GetValue(IContext context, ITarget target, IEnumerable<IPropertyValue> allPropertyValues)
+        private object GetValue([NotNull] IContext context, [NotNull] ITarget target, [NotNull] IEnumerable<IPropertyValue> allPropertyValues)
         {
             Ensure.ArgumentNotNull(context, "context");
             Ensure.ArgumentNotNull(target, "target");

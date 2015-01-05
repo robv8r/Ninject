@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Ninject.Planning.Directives;
 #endregion
 
@@ -23,13 +24,14 @@ namespace Ninject.Planning
         /// <summary>
         /// Gets the type that the plan describes.
         /// </summary>
+        [NotNull]
         Type Type { get; }
 
         /// <summary>
         /// Adds the specified directive to the plan.
         /// </summary>
         /// <param name="directive">The directive.</param>
-        void Add(IDirective directive);
+        void Add([NotNull] IDirective directive);
 
         /// <summary>
         /// Determines whether the plan contains one or more directives of the specified type.
@@ -43,6 +45,7 @@ namespace Ninject.Planning
         /// </summary>
         /// <typeparam name="TDirective">The type of directive.</typeparam>
         /// <returns>The first directive, or <see langword="null"/> if no matching directives exist.</returns>
+        [NotNull]
         TDirective GetOne<TDirective>() where TDirective : IDirective;
 
         /// <summary>
@@ -50,6 +53,7 @@ namespace Ninject.Planning
         /// </summary>
         /// <typeparam name="TDirective">The type of directive.</typeparam>
         /// <returns>A series of directives of the specified type.</returns>
+        [NotNull]
         IEnumerable<TDirective> GetAll<TDirective>() where TDirective : IDirective;
     }
 }

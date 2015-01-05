@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using JetBrains.Annotations;
 using Ninject.Activation;
 using Ninject.Infrastructure;
 using Ninject.Infrastructure.Introspection;
@@ -39,6 +40,7 @@ namespace Ninject.Planning.Targets
         /// <summary>
         /// Gets or sets the site (property, parameter, etc.) represented by the target.
         /// </summary>
+        [NotNull]
         public T Site { get; private set; }
 
         /// <summary>
@@ -89,7 +91,7 @@ namespace Ninject.Planning.Targets
         /// </summary>
         /// <param name="member">The member that contains the target.</param>
         /// <param name="site">The site represented by the target.</param>
-        protected Target(MemberInfo member, T site)
+        protected Target([NotNull] MemberInfo member, [NotNull] T site)
         {
             Ensure.ArgumentNotNull(member, "member");
             Ensure.ArgumentNotNull(site, "site");
@@ -171,7 +173,8 @@ namespace Ninject.Planning.Targets
         /// <param name="service">The service that the target is requesting.</param>
         /// <param name="parent">The parent context in which the target is being injected.</param>
         /// <returns>A series of values that are available for injection.</returns>
-        protected virtual IEnumerable<object> GetValues(Type service, IContext parent)
+        [NotNull]
+        protected virtual IEnumerable<object> GetValues([NotNull] Type service, [NotNull] IContext parent)
         {
             Ensure.ArgumentNotNull(service, "service");
             Ensure.ArgumentNotNull(parent, "parent");
@@ -187,7 +190,8 @@ namespace Ninject.Planning.Targets
         /// <param name="service">The service that the target is requesting.</param>
         /// <param name="parent">The parent context in which the target is being injected.</param>
         /// <returns>The value that is to be injected.</returns>
-        protected virtual object GetValue(Type service, IContext parent)
+        [CanBeNull]
+        protected virtual object GetValue([NotNull] Type service, [NotNull] IContext parent)
         {
             Ensure.ArgumentNotNull(service, "service");
             Ensure.ArgumentNotNull(parent, "parent");

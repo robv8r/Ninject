@@ -11,6 +11,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 #endregion
 
 namespace Ninject.Infrastructure
@@ -28,7 +29,7 @@ namespace Ninject.Infrastructure
         /// Gets the collection of values stored under the specified key.
         /// </summary>
         /// <param name="key">The key.</param>
-        public ICollection<V> this[K key]
+        public ICollection<V> this[[NotNull] K key]
         {
             get
             {
@@ -62,7 +63,7 @@ namespace Ninject.Infrastructure
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
-        public void Add(K key, V value)
+        public void Add([NotNull] K key, [NotNull] V value)
         {
             Ensure.ArgumentNotNull(key, "key");
             Ensure.ArgumentNotNull(value, "value");
@@ -76,7 +77,7 @@ namespace Ninject.Infrastructure
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
         /// <returns><c>True</c> if such a value existed and was removed; otherwise <c>false</c>.</returns>
-        public bool Remove(K key, V value)
+        public bool Remove([NotNull] K key, [NotNull] V value)
         {
             Ensure.ArgumentNotNull(key, "key");
             Ensure.ArgumentNotNull(value, "value");
@@ -92,7 +93,7 @@ namespace Ninject.Infrastructure
         /// </summary>
         /// <param name="key">The key.</param>
         /// <returns><c>True</c> if any such values existed; otherwise <c>false</c>.</returns>
-        public bool RemoveAll(K key)
+        public bool RemoveAll([NotNull] K key)
         {
             Ensure.ArgumentNotNull(key, "key");
             return _items.Remove(key);
@@ -111,7 +112,7 @@ namespace Ninject.Infrastructure
         /// </summary>
         /// <param name="key">The key.</param>
         /// <returns><c>True</c> if the multimap has one or more values for the specified key; otherwise, <c>false</c>.</returns>
-        public bool ContainsKey(K key)
+        public bool ContainsKey([NotNull] K key)
         {
             Ensure.ArgumentNotNull(key, "key");
             return _items.ContainsKey(key);
@@ -123,7 +124,7 @@ namespace Ninject.Infrastructure
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
         /// <returns><c>True</c> if the multimap contains such a value; otherwise, <c>false</c>.</returns>
-        public bool ContainsValue(K key, V value)
+        public bool ContainsValue([NotNull] K key, [NotNull] V value)
         {
             Ensure.ArgumentNotNull(key, "key");
             Ensure.ArgumentNotNull(value, "value");
@@ -135,6 +136,7 @@ namespace Ninject.Infrastructure
         /// Returns an enumerator that iterates through a the multimap.
         /// </summary>
         /// <returns>An <see cref="IEnumerator"/> object that can be used to iterate through the multimap.</returns>
+        [NotNull]
         public IEnumerator GetEnumerator()
         {
             return _items.GetEnumerator();

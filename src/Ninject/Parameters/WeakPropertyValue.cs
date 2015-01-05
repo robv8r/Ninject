@@ -22,6 +22,7 @@
 namespace Ninject.Parameters
 {
     using System;
+    using JetBrains.Annotations;
 
     /// <summary>
     /// Overrides the injected value of a property.
@@ -36,7 +37,7 @@ namespace Ninject.Parameters
         /// </summary>
         /// <param name="name">The name of the property to override.</param>
         /// <param name="value">The value to inject into the property.</param>
-        public WeakPropertyValue(string name, object value)
+        public WeakPropertyValue([NotNull] string name, [CanBeNull] object value)
             : base(name, (object)null, false)
         {
             this.weakReference = new WeakReference(value);

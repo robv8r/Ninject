@@ -26,6 +26,7 @@ namespace Ninject.Modules
     using System.Collections.Generic;
     using System.Reflection;
 
+    using JetBrains.Annotations;
     using Ninject.Components;
 
     /// <summary>
@@ -39,7 +40,8 @@ namespace Ninject.Modules
         /// <param name="filenames">The filenames.</param>
         /// <param name="filter">The filter.</param>
         /// <returns>All assembly names of the assemblies in the given files that match the filter.</returns>
-        IEnumerable<AssemblyName> GetAssemblyNames(IEnumerable<string> filenames, Predicate<Assembly> filter);
+        [NotNull]
+        IEnumerable<AssemblyName> GetAssemblyNames([NotNull] IEnumerable<string> filenames, [NotNull] Predicate<Assembly> filter);
     }
 }
 #endif

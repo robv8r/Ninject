@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Reflection;
+using JetBrains.Annotations;
 using Ninject.Infrastructure;
 using Ninject.Injection;
 #endregion
@@ -24,6 +25,7 @@ namespace Ninject.Planning.Directives
         /// <summary>
         /// The base .ctor definition.
         /// </summary>
+        [NotNull]
         public ConstructorInfo Constructor { get; set; }
 
         /// <summary>
@@ -31,7 +33,7 @@ namespace Ninject.Planning.Directives
         /// </summary>
         /// <param name="constructor">The constructor described by the directive.</param>
         /// <param name="injector">The injector that will be triggered.</param>
-        public ConstructorInjectionDirective(ConstructorInfo constructor, ConstructorInjector injector)
+        public ConstructorInjectionDirective([NotNull] ConstructorInfo constructor, [NotNull] ConstructorInjector injector)
             : base(constructor, injector)
         {
             Constructor = constructor;

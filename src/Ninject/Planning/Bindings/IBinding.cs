@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Ninject.Activation;
 using Ninject.Parameters;
 #endregion
@@ -25,11 +26,13 @@ namespace Ninject.Planning.Bindings
         /// Gets the binding configuration.
         /// </summary>
         /// <value>The binding configuration.</value>
+        [NotNull]
         IBindingConfiguration BindingConfiguration { get; }
 
         /// <summary>
         /// Gets the service type that is controlled by the binding.
         /// </summary>
+        [NotNull]
         Type Service { get; }
     }
 }

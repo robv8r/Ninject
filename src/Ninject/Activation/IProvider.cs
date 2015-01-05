@@ -9,6 +9,7 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 #endregion
 
 namespace Ninject.Activation
@@ -21,6 +22,7 @@ namespace Ninject.Activation
         /// <summary>
         /// Gets the type (or prototype) of instances the provider creates.
         /// </summary>
+        [NotNull]
         Type Type { get; }
 
         /// <summary>
@@ -28,6 +30,7 @@ namespace Ninject.Activation
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns>The created instance.</returns>
-        object Create(IContext context);
+        [NotNull]
+        object Create([NotNull] IContext context);
     }
 }

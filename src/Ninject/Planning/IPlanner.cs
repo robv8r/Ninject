@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Ninject.Components;
 using Ninject.Planning.Strategies;
 #endregion
@@ -24,6 +25,7 @@ namespace Ninject.Planning
         /// <summary>
         /// Gets the strategies that contribute to the planning process.
         /// </summary>
+        [NotNull]
         IList<IPlanningStrategy> Strategies { get; }
 
         /// <summary>
@@ -31,6 +33,7 @@ namespace Ninject.Planning
         /// </summary>
         /// <param name="type">The type for which a plan should be created.</param>
         /// <returns>The type's activation plan.</returns>
-        IPlan GetPlan(Type type);
+        [CanBeNull]
+        IPlan GetPlan([NotNull] Type type);
     }
 }

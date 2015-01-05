@@ -13,6 +13,7 @@ namespace Ninject.Activation.Caching
     using System.Collections.Generic;
     using System.Linq;
 
+    using JetBrains.Annotations;
     using Ninject.Components;
     using Ninject.Infrastructure;
     using Ninject.Infrastructure.Disposal;
@@ -35,7 +36,7 @@ namespace Ninject.Activation.Caching
         /// </summary>
         /// <param name="pipeline">The pipeline component.</param>
         /// <param name="cachePruner">The cache pruner component.</param>
-        public Cache(IPipeline pipeline, ICachePruner cachePruner)
+        public Cache([NotNull] IPipeline pipeline, [NotNull] ICachePruner cachePruner)
         {
             Ensure.ArgumentNotNull(pipeline, "pipeline");
             Ensure.ArgumentNotNull(cachePruner, "cachePruner");
@@ -47,6 +48,7 @@ namespace Ninject.Activation.Caching
         /// <summary>
         /// Gets the pipeline component.
         /// </summary>
+        [NotNull]
         public IPipeline Pipeline { get; private set; }
 
         /// <summary>

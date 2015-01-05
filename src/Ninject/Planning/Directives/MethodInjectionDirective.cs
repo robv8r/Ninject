@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Reflection;
+using JetBrains.Annotations;
 using Ninject.Infrastructure;
 using Ninject.Injection;
 #endregion
@@ -26,7 +27,7 @@ namespace Ninject.Planning.Directives
         /// </summary>
         /// <param name="method">The method described by the directive.</param>
         /// <param name="injector">The injector that will be triggered.</param>
-        public MethodInjectionDirective(MethodInfo method, MethodInjector injector)
+        public MethodInjectionDirective([NotNull] MethodInfo method, [NotNull] MethodInjector injector)
             : base(method, injector) { }
     }
 }

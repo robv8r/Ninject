@@ -12,6 +12,7 @@ namespace Ninject
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
+    using JetBrains.Annotations;
     using Ninject.Activation;
     using Ninject.Activation.Blocks;
     using Ninject.Activation.Caching;
@@ -34,6 +35,7 @@ namespace Ninject
         /// <summary>
         /// Lock used when adding missing bindings.
         /// </summary>
+        [NotNull]
         protected readonly object HandleMissingBindingLockObject = new object();        
         
         private readonly Multimap<Type, IBinding> bindings = new Multimap<Type, IBinding>();
@@ -54,7 +56,7 @@ namespace Ninject
         /// Initializes a new instance of the <see cref="KernelBase"/> class.
         /// </summary>
         /// <param name="modules">The modules to load into the kernel.</param>
-        protected KernelBase(params INinjectModule[] modules)
+        protected KernelBase([NotNull] params INinjectModule[] modules)
             : this(new ComponentContainer(), new NinjectSettings(), modules)
         {
         }
@@ -64,7 +66,7 @@ namespace Ninject
         /// </summary>
         /// <param name="settings">The configuration to use.</param>
         /// <param name="modules">The modules to load into the kernel.</param>
-        protected KernelBase(INinjectSettings settings, params INinjectModule[] modules)
+        protected KernelBase([NotNull] INinjectSettings settings, [NotNull] params INinjectModule[] modules)
             : this(new ComponentContainer(), settings, modules)
         {
         }
@@ -75,7 +77,7 @@ namespace Ninject
         /// <param name="components">The component container to use.</param>
         /// <param name="settings">The configuration to use.</param>
         /// <param name="modules">The modules to load into the kernel.</param>
-        protected KernelBase(IComponentContainer components, INinjectSettings settings, params INinjectModule[] modules)
+        protected KernelBase([NotNull] IComponentContainer components, [NotNull] INinjectSettings settings, [NotNull] params INinjectModule[] modules)
         {
             Ensure.ArgumentNotNull(components, "components");
             Ensure.ArgumentNotNull(settings, "settings");
@@ -444,6 +446,7 @@ namespace Ninject
         /// Returns an IComparer that is used to determine resolution precedence.
         /// </summary>
         /// <returns>An IComparer that is used to determine resolution precedence.</returns>
+        [NotNull]
         protected virtual IComparer<IBinding> GetBindingPrecedenceComparer()
         {
             return new BindingPrecedenceComparer();
@@ -454,7 +457,8 @@ namespace Ninject
         /// </summary>
         /// <param name="request">The request/</param>
         /// <returns>A predicate that can determine if a given IBinding matches the request.</returns>
-        protected virtual Func<IBinding, bool> SatifiesRequest(IRequest request)
+        [NotNull]
+        protected virtual Func<IBinding, bool> SatifiesRequest([NotNull] IRequest request)
         {
             return binding => binding.Matches(request) && request.Matches(binding);
         }
@@ -480,7 +484,8 @@ namespace Ninject
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns><c>True</c> if the missing binding can be handled; otherwise <c>false</c>.</returns>
-        protected virtual bool HandleMissingBinding(IRequest request)
+        [NotNull]
+        protected virtual bool HandleMissingBinding([NotNull] IRequest request)
         {
             Ensure.ArgumentNotNull(request, "request");
 
@@ -536,7 +541,8 @@ namespace Ninject
         /// <param name="request">The request.</param>
         /// <param name="binding">The binding.</param>
         /// <returns>The created context.</returns>
-        protected virtual IContext CreateContext(IRequest request, IBinding binding)
+        [NotNull]
+        protected virtual IContext CreateContext([NotNull] IRequest request, [NotNull] IBinding binding)
         {
             Ensure.ArgumentNotNull(request, "request");
             Ensure.ArgumentNotNull(binding, "binding");

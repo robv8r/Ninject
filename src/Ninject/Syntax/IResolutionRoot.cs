@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Ninject.Activation;
 using Ninject.Parameters;
 using Ninject.Planning.Bindings;
@@ -27,7 +28,7 @@ namespace Ninject.Syntax
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns><c>True</c> if the request can be resolved; otherwise, <c>false</c>.</returns>
-        bool CanResolve(IRequest request);
+        bool CanResolve([NotNull] IRequest request);
 
         /// <summary>
         /// Determines whether the specified request can be resolved.
@@ -37,7 +38,7 @@ namespace Ninject.Syntax
         /// <returns>
         ///     <c>True</c> if the request can be resolved; otherwise, <c>false</c>.
         /// </returns>
-        bool CanResolve(IRequest request, bool ignoreImplicitBindings);
+        bool CanResolve([NotNull] IRequest request, bool ignoreImplicitBindings);
         
         /// <summary>
         /// Resolves instances for the specified request. The instances are not actually resolved
@@ -45,7 +46,8 @@ namespace Ninject.Syntax
         /// </summary>
         /// <param name="request">The request to resolve.</param>
         /// <returns>An enumerator of instances that match the request.</returns>
-        IEnumerable<object> Resolve(IRequest request);
+        [NotNull]
+        IEnumerable<object> Resolve([NotNull] IRequest request);
 
         /// <summary>
         /// Creates a request for the specified service.
@@ -56,13 +58,14 @@ namespace Ninject.Syntax
         /// <param name="isOptional"><c>True</c> if the request is optional; otherwise, <c>false</c>.</param>
         /// <param name="isUnique"><c>True</c> if the request should return a unique result; otherwise, <c>false</c>.</param>
         /// <returns>The created request.</returns>
-        IRequest CreateRequest(Type service, Func<IBindingMetadata, bool> constraint, IEnumerable<IParameter> parameters, bool isOptional, bool isUnique);
+        [NotNull]
+        IRequest CreateRequest([NotNull] Type service, [CanBeNull] Func<IBindingMetadata, bool> constraint, [NotNull] IEnumerable<IParameter> parameters, bool isOptional, bool isUnique);
 
         /// <summary>
         /// Deactivates and releases the specified instance if it is currently managed by Ninject.
         /// </summary>
         /// <param name="instance">The instance to release.</param>
         /// <returns><see langword="True"/> if the instance was found and released; otherwise <see langword="false"/>.</returns>
-        bool Release(object instance);
+        bool Release([NotNull] object instance);
     }
 }

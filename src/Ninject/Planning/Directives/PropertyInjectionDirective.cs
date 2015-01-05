@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Reflection;
+using JetBrains.Annotations;
 using Ninject.Injection;
 using Ninject.Planning.Targets;
 #endregion
@@ -24,11 +25,13 @@ namespace Ninject.Planning.Directives
         /// <summary>
         /// Gets or sets the injector that will be triggered.
         /// </summary>
+        [NotNull]
         public PropertyInjector Injector { get; private set; }
 
         /// <summary>
         /// Gets or sets the injection target for the directive.
         /// </summary>
+        [NotNull]
         public ITarget Target { get; private set; }
 
         /// <summary>
@@ -36,7 +39,7 @@ namespace Ninject.Planning.Directives
         /// </summary>
         /// <param name="member">The member the directive describes.</param>
         /// <param name="injector">The injector that will be triggered.</param>
-        public PropertyInjectionDirective(PropertyInfo member, PropertyInjector injector)
+        public PropertyInjectionDirective([NotNull] PropertyInfo member, [NotNull] PropertyInjector injector)
         {
             Injector = injector;
             Target = CreateTarget(member);
@@ -47,7 +50,8 @@ namespace Ninject.Planning.Directives
         /// </summary>
         /// <param name="propertyInfo">The property.</param>
         /// <returns>The target for the property.</returns>
-        protected virtual ITarget CreateTarget(PropertyInfo propertyInfo)
+        [NotNull]
+        protected virtual ITarget CreateTarget([NotNull] PropertyInfo propertyInfo)
         {
             return new PropertyTarget(propertyInfo);
         }

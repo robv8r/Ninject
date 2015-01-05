@@ -27,6 +27,7 @@ namespace Ninject.Planning
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
+    using JetBrains.Annotations;
     using Ninject.Components;
     using Ninject.Infrastructure;
     using Ninject.Infrastructure.Language;
@@ -44,7 +45,7 @@ namespace Ninject.Planning
         /// Initializes a new instance of the <see cref="Planner"/> class.
         /// </summary>
         /// <param name="strategies">The strategies to execute during planning.</param>
-        public Planner(IEnumerable<IPlanningStrategy> strategies)
+        public Planner([NotNull] IEnumerable<IPlanningStrategy> strategies)
         {
             Ensure.ArgumentNotNull(strategies, "strategies");
             this.Strategies = strategies.ToList();

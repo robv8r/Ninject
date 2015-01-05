@@ -14,6 +14,7 @@ using Ninject.Activation;
 
 namespace Ninject.Parameters
 {
+    using JetBrains.Annotations;
     using Ninject.Planning.Targets;
 
     /// <summary>
@@ -24,6 +25,7 @@ namespace Ninject.Parameters
         /// <summary>
         /// Gets the name of the parameter.
         /// </summary>
+        [NotNull]
         string Name { get; }
 
         /// <summary>
@@ -37,6 +39,7 @@ namespace Ninject.Parameters
         /// <param name="context">The context.</param>
         /// <param name="target">The target.</param>
         /// <returns>The value for the parameter.</returns>
-        object GetValue(IContext context, ITarget target);
+        [CanBeNull]
+        object GetValue([NotNull] IContext context, [NotNull] ITarget target);
     }
 }

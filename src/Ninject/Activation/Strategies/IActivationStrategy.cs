@@ -9,6 +9,7 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 using Ninject.Components;
 #endregion
 
@@ -25,13 +26,13 @@ namespace Ninject.Activation.Strategies
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="reference">A reference to the instance being activated.</param>
-        void Activate(IContext context, InstanceReference reference);
+        void Activate([NotNull] IContext context, [NotNull] InstanceReference reference);
 
         /// <summary>
         /// Contributes to the deactivation of the instance in the specified context.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="reference">A reference to the instance being deactivated.</param>
-        void Deactivate(IContext context, InstanceReference reference);
+        void Deactivate([NotNull] IContext context, [NotNull] InstanceReference reference);
     }
 }

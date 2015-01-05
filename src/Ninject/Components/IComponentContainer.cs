@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 #endregion
 
 namespace Ninject.Components
@@ -22,6 +23,7 @@ namespace Ninject.Components
         /// <summary>
         /// Gets or sets the kernel that owns the component container.
         /// </summary>
+        [NotNull]
         IKernel Kernel { get; set; }
 
         /// <summary>
@@ -43,6 +45,7 @@ namespace Ninject.Components
         /// Removes all registrations for the specified component.
         /// </summary>
         /// <param name="component">The component's type.</param>
+        [NotNull]
         void RemoveAll(Type component);
 
         /// <summary>
@@ -50,6 +53,7 @@ namespace Ninject.Components
         /// </summary>
         /// <typeparam name="T">The component type.</typeparam>
         /// <typeparam name="TImplementation">The implementation type.</typeparam>
+        [NotNull]
         void Remove<T, TImplementation>() where T : INinjectComponent where TImplementation : T;
 
         /// <summary>
@@ -57,6 +61,7 @@ namespace Ninject.Components
         /// </summary>
         /// <typeparam name="T">The component type.</typeparam>
         /// <returns>The instance of the component.</returns>
+        [NotNull]
         T Get<T>() where T : INinjectComponent;
 
         /// <summary>
@@ -64,6 +69,7 @@ namespace Ninject.Components
         /// </summary>
         /// <typeparam name="T">The component type.</typeparam>
         /// <returns>A series of instances of the specified component.</returns>
+        [NotNull]
         IEnumerable<T> GetAll<T>() where T : INinjectComponent;
 
         /// <summary>
@@ -71,14 +77,14 @@ namespace Ninject.Components
         /// </summary>
         /// <param name="component">The component type.</param>
         /// <returns>The instance of the component.</returns>
-        object Get(Type component);
+        [NotNull] object Get([NotNull] Type component);
 
         /// <summary>
         /// Gets all available instances of the specified component.
         /// </summary>
         /// <param name="component">The component type.</param>
         /// <returns>A series of instances of the specified component.</returns>
-        IEnumerable<object> GetAll(Type component);
+        [NotNull] IEnumerable<object> GetAll([NotNull] Type component);
 
         /// <summary>
         /// Registers a transient component in the container.

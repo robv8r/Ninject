@@ -25,6 +25,7 @@ namespace Ninject.Syntax
 {
     using System;
 
+    using JetBrains.Annotations;
     using Ninject.Activation;
 
     /// <summary>
@@ -38,7 +39,8 @@ namespace Ninject.Syntax
         /// </summary>
         /// <param name="action">The action callback.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingOnSyntax<T> OnActivation(Action<T> action);
+        [NotNull]
+        IBindingOnSyntax<T> OnActivation([NotNull] Action<T> action);
 
         /// <summary>
         /// Indicates that the specified callback should be invoked when instances are activated.
@@ -46,14 +48,16 @@ namespace Ninject.Syntax
         /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
         /// <param name="action">The action callback.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingOnSyntax<T> OnActivation<TImplementation>(Action<TImplementation> action);
+        [NotNull]
+        IBindingOnSyntax<T> OnActivation<TImplementation>([NotNull] Action<TImplementation> action);
 
         /// <summary>
         /// Indicates that the specified callback should be invoked when instances are activated.
         /// </summary>
         /// <param name="action">The action callback.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingOnSyntax<T> OnActivation(Action<IContext, T> action);
+        [NotNull]
+        IBindingOnSyntax<T> OnActivation([NotNull] Action<IContext, T> action);
 
         /// <summary>
         /// Indicates that the specified callback should be invoked when instances are activated.
@@ -61,29 +65,16 @@ namespace Ninject.Syntax
         /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
         /// <param name="action">The action callback.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingOnSyntax<T> OnActivation<TImplementation>(Action<IContext, TImplementation> action);
+        [NotNull]
+        IBindingOnSyntax<T> OnActivation<TImplementation>([NotNull] Action<IContext, TImplementation> action);
 
         /// <summary>
         /// Indicates that the specified callback should be invoked when instances are deactivated.
         /// </summary>
         /// <param name="action">The action callback.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingOnSyntax<T> OnDeactivation(Action<T> action);
-
-        /// <summary>
-        /// Indicates that the specified callback should be invoked when instances are deactivated.
-        /// </summary>
-        /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
-        /// <param name="action">The action callback.</param>
-        /// <returns>The fluent syntax.</returns>
-        IBindingOnSyntax<T> OnDeactivation<TImplementation>(Action<TImplementation> action);
-
-        /// <summary>
-        /// Indicates that the specified callback should be invoked when instances are deactivated.
-        /// </summary>
-        /// <param name="action">The action callback.</param>
-        /// <returns>The fluent syntax.</returns>
-        IBindingOnSyntax<T> OnDeactivation(Action<IContext, T> action);
+        [NotNull]
+        IBindingOnSyntax<T> OnDeactivation([NotNull] Action<T> action);
 
         /// <summary>
         /// Indicates that the specified callback should be invoked when instances are deactivated.
@@ -91,6 +82,24 @@ namespace Ninject.Syntax
         /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
         /// <param name="action">The action callback.</param>
         /// <returns>The fluent syntax.</returns>
-        IBindingOnSyntax<T> OnDeactivation<TImplementation>(Action<IContext, TImplementation> action);
+        [NotNull]
+        IBindingOnSyntax<T> OnDeactivation<TImplementation>([NotNull] Action<TImplementation> action);
+
+        /// <summary>
+        /// Indicates that the specified callback should be invoked when instances are deactivated.
+        /// </summary>
+        /// <param name="action">The action callback.</param>
+        /// <returns>The fluent syntax.</returns>
+        [NotNull]
+        IBindingOnSyntax<T> OnDeactivation([NotNull] Action<IContext, T> action);
+
+        /// <summary>
+        /// Indicates that the specified callback should be invoked when instances are deactivated.
+        /// </summary>
+        /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
+        /// <param name="action">The action callback.</param>
+        /// <returns>The fluent syntax.</returns>
+        [NotNull]
+        IBindingOnSyntax<T> OnDeactivation<TImplementation>([NotNull] Action<IContext, TImplementation> action);
     }
 }

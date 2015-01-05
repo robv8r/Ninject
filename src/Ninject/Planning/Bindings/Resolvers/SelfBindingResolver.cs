@@ -12,6 +12,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using Ninject.Activation;
 using Ninject.Activation.Providers;
 using Ninject.Components;
@@ -52,7 +53,7 @@ namespace Ninject.Planning.Bindings.Resolvers
         /// </summary>
         /// <param name="service">The service.</param>
         /// <returns><see langword="True"/> if the type is self-bindable; otherwise <see langword="false"/>.</returns>
-        protected virtual bool TypeIsSelfBindable(Type service)
+        protected virtual bool TypeIsSelfBindable([NotNull] Type service)
         {
             return !service.IsInterface
                    && !service.IsAbstract

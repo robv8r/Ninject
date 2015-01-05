@@ -9,6 +9,7 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 using Ninject.Infrastructure;
 #endregion
 
@@ -23,13 +24,14 @@ namespace Ninject.Activation.Providers
         /// <summary>
         /// Gets the callback method used by the provider.
         /// </summary>
+        [NotNull]
         public Func<IContext, T> Method { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the CallbackProvider&lt;T&gt; class.
         /// </summary>
         /// <param name="method">The callback method that will be called to create instances.</param>
-        public CallbackProvider(Func<IContext, T> method)
+        public CallbackProvider([NotNull] Func<IContext, T> method)
         {
             Ensure.ArgumentNotNull(method, "method");
             Method = method;

@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Ninject.Infrastructure;
 using Ninject.Infrastructure.Disposal;
 using Ninject.Parameters;
@@ -28,18 +29,20 @@ namespace Ninject.Activation.Blocks
         /// <summary>
         /// Gets or sets the parent resolution root (usually the kernel).
         /// </summary>
+        [NotNull]
         public IResolutionRoot Parent { get; private set; }
 
         /// <summary>
         /// Occurs when the object is disposed.
         /// </summary>
+        [CanBeNull]
         public event EventHandler Disposed;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ActivationBlock"/> class.
         /// </summary>
         /// <param name="parent">The parent resolution root.</param>
-        public ActivationBlock(IResolutionRoot parent)
+        public ActivationBlock([NotNull] IResolutionRoot parent)
         {
             Ensure.ArgumentNotNull(parent, "parent");
             Parent = parent;

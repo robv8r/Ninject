@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Ninject.Activation;
 using Ninject.Infrastructure;
 using Ninject.Parameters;
@@ -26,7 +27,7 @@ namespace Ninject.Planning.Bindings
         /// Initializes a new instance of the <see cref="Binding"/> class.
         /// </summary>
         /// <param name="service">The service that is controlled by the binding.</param>
-        public Binding(Type service)
+        public Binding([NotNull] Type service)
         {
             Ensure.ArgumentNotNull(service, "service");
 
@@ -39,7 +40,7 @@ namespace Ninject.Planning.Bindings
         /// </summary>
         /// <param name="service">The service that is controlled by the binding.</param>
         /// <param name="configuration">The binding configuration.</param>
-        public Binding(Type service, IBindingConfiguration configuration)
+        public Binding([NotNull] Type service, [NotNull] IBindingConfiguration configuration)
         {
             Ensure.ArgumentNotNull(service, "service");
             Ensure.ArgumentNotNull(configuration, "configuration");

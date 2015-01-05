@@ -10,8 +10,10 @@
 
 namespace Ninject.Injection
 {
+    using JetBrains.Annotations;
+
     /// <summary>
     /// A delegate that can inject values into a constructor.
     /// </summary>
-    public delegate object ConstructorInjector(params object[] arguments);
+    public delegate object ConstructorInjector([NotNull] params object[] arguments);
 }

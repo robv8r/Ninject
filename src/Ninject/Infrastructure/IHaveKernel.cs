@@ -9,6 +9,7 @@
 #endregion
 #region Using Directives
 using System;
+using JetBrains.Annotations;
 #endregion
 
 namespace Ninject.Infrastructure
@@ -21,6 +22,7 @@ namespace Ninject.Infrastructure
         /// <summary>
         /// Gets the kernel.
         /// </summary>
+        [NotNull]
         IKernel Kernel { get; }
     }
 }
