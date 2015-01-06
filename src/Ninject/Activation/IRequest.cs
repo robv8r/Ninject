@@ -14,7 +14,7 @@ using JetBrains.Annotations;
 using Ninject.Parameters;
 using Ninject.Planning.Bindings;
 using Ninject.Planning.Targets;
-using Ninject.Syntax;
+
 #endregion
 
 namespace Ninject.Activation
@@ -112,6 +112,7 @@ namespace Ninject.Activation
         /// <param name="parentContext">The context in which the request was made.</param>
         /// <param name="target">The target that will receive the injection.</param>
         /// <returns>The child request.</returns>
+        [NotNull]
         IRequest CreateChild([NotNull] Type service, [NotNull] IContext parentContext, [NotNull] ITarget target);
     }
 }
