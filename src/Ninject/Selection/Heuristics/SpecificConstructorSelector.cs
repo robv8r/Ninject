@@ -30,6 +30,7 @@ namespace Ninject.Selection.Heuristics
     /// </summary>
     public class SpecificConstructorSelector : NinjectComponent, IConstructorScorer
     {
+        [NotNull]
         private readonly ConstructorInfo constructorInfo;
 
         /// <summary>

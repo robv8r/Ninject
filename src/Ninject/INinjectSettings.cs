@@ -36,7 +36,7 @@ namespace Ninject
         /// <summary>
         /// Gets the default scope callback.
         /// </summary>
-        [NotNull]
+        [CanBeNull]
         Func<IContext, object> DefaultScopeCallback { get; }
 
         #if !NO_ASSEMBLY_SCANNING
@@ -48,7 +48,7 @@ namespace Ninject
         /// <summary>
         /// Gets the paths that should be searched for extensions.
         /// </summary>
-        [NotNull]
+        [CanBeNull]
         string[] ExtensionSearchPatterns { get; }
         #endif //!NO_ASSEMBLY_SCANNING
 
@@ -102,13 +102,14 @@ namespace Ninject
         /// <param name="key">The setting's key.</param>
         /// <param name="defaultValue">The value to return if no setting is available.</param>
         /// <returns>The value, or the default value if none was found.</returns>
-        T Get<T>(string key, T defaultValue);
+        [CanBeNull]
+        T Get<T>([NotNull] string key, [CanBeNull] T defaultValue);
 
         /// <summary>
         /// Sets the value for the specified key.
         /// </summary>
         /// <param name="key">The setting's key.</param>
         /// <param name="value">The setting's value.</param>
-        void Set(string key, object value);
+        void Set([NotNull] string key, [CanBeNull] object value);
     }
 }

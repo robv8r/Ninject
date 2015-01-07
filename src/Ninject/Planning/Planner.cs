@@ -38,7 +38,9 @@ namespace Ninject.Planning
     /// </summary>
     public class Planner : NinjectComponent, IPlanner
     {
+        [NotNull]
         private readonly ReaderWriterLock plannerLock = new ReaderWriterLock();
+        [NotNull]
         private readonly Dictionary<Type, IPlan> plans = new Dictionary<Type, IPlan>();
 
         /// <summary>

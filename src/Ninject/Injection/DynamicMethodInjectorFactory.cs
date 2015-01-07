@@ -29,7 +29,7 @@ namespace Ninject.Injection
         /// </summary>
         /// <param name="constructor">The constructor.</param>
         /// <returns>The created injector.</returns>
-        public ConstructorInjector Create([NotNull] ConstructorInfo constructor)
+        public ConstructorInjector Create(ConstructorInfo constructor)
         {
             #if SILVERLIGHT
             var dynamicMethod = new DynamicMethod(GetAnonymousMethodName(), typeof(object), new[] { typeof(object[]) });
@@ -55,8 +55,7 @@ namespace Ninject.Injection
         /// </summary>
         /// <param name="property">The property.</param>
         /// <returns>The created injector.</returns>
-        [NotNull]
-        public PropertyInjector Create([NotNull] PropertyInfo property)
+        public PropertyInjector Create(PropertyInfo property)
         {
             #if NO_SKIP_VISIBILITY
             var dynamicMethod = new DynamicMethod(GetAnonymousMethodName(), typeof(void), new[] { typeof(object), typeof(object) });
@@ -89,8 +88,7 @@ namespace Ninject.Injection
         /// </summary>
         /// <param name="method">The method.</param>
         /// <returns>The created injector.</returns>
-        [NotNull]
-        public MethodInjector Create([NotNull] MethodInfo method)
+        public MethodInjector Create(MethodInfo method)
         {
             #if NO_SKIP_VISIBILITY
             var dynamicMethod = new DynamicMethod(GetAnonymousMethodName(), typeof(void), new[] { typeof(object), typeof(object[]) });

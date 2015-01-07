@@ -23,7 +23,7 @@ namespace Ninject.Planning.Bindings
         /// <summary>
         /// Gets or sets the binding's name.
         /// </summary>
-        [NotNull]
+        [CanBeNull]
         string Name { get; set; }
 
         /// <summary>

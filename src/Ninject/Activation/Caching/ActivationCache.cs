@@ -16,21 +16,25 @@ namespace Ninject.Activation.Caching
         /// <summary>
         /// The objects that were activated as reference equal weak references.
         /// </summary>
+        [NotNull]
         private readonly IDictionary<object, bool> activatedObjects = new Dictionary<object, bool>(new WeakReferenceEqualityComparer());
 
         /// <summary>
         /// The objects that were activated as reference equal weak references.
         /// </summary>
+        [NotNull]
         private readonly IDictionary<object, bool> deactivatedObjects = new Dictionary<object, bool>(new WeakReferenceEqualityComparer());
 #else
         /// <summary>
         /// The objects that were activated as reference equal weak references.
         /// </summary>
+        [NotNull]
         private readonly HashSet<object> activatedObjects = new HashSet<object>(new WeakReferenceEqualityComparer());
 
         /// <summary>
         /// The objects that were activated as reference equal weak references.
         /// </summary>
+        [NotNull]
         private readonly HashSet<object> deactivatedObjects = new HashSet<object>(new WeakReferenceEqualityComparer());
 #endif
 
@@ -168,7 +172,7 @@ namespace Ninject.Activation.Caching
         /// Removes all dead objects.
         /// </summary>
         /// <param name="objects">The objects collection to be freed of dead objects.</param>
-        private static void RemoveDeadObjects(IDictionary<object, bool> objects)
+        private static void RemoveDeadObjects([NotNull] IDictionary<object, bool> objects)
         {
             var deadObjects = objects.Where(entry => !((ReferenceEqualWeakReference)entry.Key).IsAlive).ToList();
             foreach (var deadObject in deadObjects)
@@ -181,7 +185,7 @@ namespace Ninject.Activation.Caching
         /// Removes all dead objects.
         /// </summary>
         /// <param name="objects">The objects collection to be freed of dead objects.</param>
-        private static void RemoveDeadObjects(HashSet<object> objects)
+        private static void RemoveDeadObjects([NotNull] HashSet<object> objects)
         {
             objects.RemoveWhere(reference => !((ReferenceEqualWeakReference)reference).IsAlive);
         }

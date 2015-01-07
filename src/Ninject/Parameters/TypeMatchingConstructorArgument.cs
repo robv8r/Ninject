@@ -31,6 +31,7 @@ namespace Ninject.Parameters
     /// </summary>
     public class TypeMatchingConstructorArgument : IConstructorArgument
     {
+        [NotNull]
         private readonly Type type;
 
         /// <summary>
@@ -78,6 +79,7 @@ namespace Ninject.Parameters
         /// <summary>
         /// Gets or sets the callback that will be triggered to get the parameter's value.
         /// </summary>
+        [NotNull]
         private Func<IContext, ITarget, object> ValueCallback { get; set; }
 
         /// <summary>

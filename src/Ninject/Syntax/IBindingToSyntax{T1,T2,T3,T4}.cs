@@ -54,7 +54,7 @@ namespace Ninject.Syntax
         /// <param name="implementation">The implementation type.</param>
         /// <returns>The fluent syntax.</returns>
         [NotNull]
-        IBindingWhenInNamedWithOrOnSyntax<object> To(Type implementation);
+        IBindingWhenInNamedWithOrOnSyntax<object> To([NotNull] Type implementation);
 
         /// <summary>
         /// Indicates that the service should be bound to an instance of the specified provider type.

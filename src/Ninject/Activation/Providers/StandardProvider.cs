@@ -34,7 +34,6 @@ namespace Ninject.Activation.Providers
         /// <summary>
         /// Gets the type (or prototype) of instances the provider creates.
         /// </summary>
-        [NotNull]
         public Type Type { get; private set; }
 
         /// <summary>

@@ -44,7 +44,7 @@ namespace Ninject.Activation
         /// <summary>
         /// Gets or sets the activation plan.
         /// </summary>
-        [NotNull]
+        [CanBeNull]
         IPlan Plan { get; set; }
 
         /// <summary>

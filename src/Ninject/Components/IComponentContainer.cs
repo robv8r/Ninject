@@ -23,7 +23,7 @@ namespace Ninject.Components
         /// <summary>
         /// Gets or sets the kernel that owns the component container.
         /// </summary>
-        [NotNull]
+        [CanBeNull]
         IKernel Kernel { get; set; }
 
         /// <summary>
@@ -45,15 +45,13 @@ namespace Ninject.Components
         /// Removes all registrations for the specified component.
         /// </summary>
         /// <param name="component">The component's type.</param>
-        [NotNull]
-        void RemoveAll(Type component);
+        void RemoveAll([NotNull] Type component);
 
         /// <summary>
         /// Removes the specified registration.
         /// </summary>
         /// <typeparam name="T">The component type.</typeparam>
         /// <typeparam name="TImplementation">The implementation type.</typeparam>
-        [NotNull]
         void Remove<T, TImplementation>() where T : INinjectComponent where TImplementation : T;
 
         /// <summary>
@@ -77,14 +75,16 @@ namespace Ninject.Components
         /// </summary>
         /// <param name="component">The component type.</param>
         /// <returns>The instance of the component.</returns>
-        [NotNull] object Get([NotNull] Type component);
+        [NotNull]
+        object Get([NotNull] Type component);
 
         /// <summary>
         /// Gets all available instances of the specified component.
         /// </summary>
         /// <param name="component">The component type.</param>
         /// <returns>A series of instances of the specified component.</returns>
-        [NotNull] IEnumerable<object> GetAll([NotNull] Type component);
+        [NotNull]
+        IEnumerable<object> GetAll([NotNull] Type component);
 
         /// <summary>
         /// Registers a transient component in the container.

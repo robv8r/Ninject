@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Ninject.Activation;
 using Ninject.Infrastructure;
 
@@ -22,6 +23,7 @@ namespace Ninject
     /// </summary>
     public class NinjectSettings : INinjectSettings
     {
+        [NotNull]
         private readonly Dictionary<string, object> _values = new Dictionary<string, object>();
 
         /// <summary>

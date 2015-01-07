@@ -61,7 +61,7 @@ namespace Ninject.Planning.Bindings
         /// <summary>
         /// Gets or sets the callback that returns the provider that should be used by the binding.
         /// </summary>
-        [NotNull]
+        [CanBeNull]
         Func<IContext, IProvider> ProviderCallback { get; set; }
 
         /// <summary>

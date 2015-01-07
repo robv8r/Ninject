@@ -23,6 +23,7 @@ namespace Ninject.Infrastructure
     /// <typeparam name="V">The type of value.</typeparam>
     public class Multimap<K, V> : IEnumerable<KeyValuePair<K, ICollection<V>>>
     {
+        [NotNull]
         private readonly Dictionary<K, ICollection<V>> _items = new Dictionary<K, ICollection<V>>();
 
         /// <summary>
@@ -45,6 +46,7 @@ namespace Ninject.Infrastructure
         /// <summary>
         /// Gets the collection of keys.
         /// </summary>
+        [NotNull]
         public ICollection<K> Keys
         {
             get { return _items.Keys; }
@@ -53,6 +55,7 @@ namespace Ninject.Infrastructure
         /// <summary>
         /// Gets the collection of collections of values.
         /// </summary>
+        [NotNull]
         public ICollection<ICollection<V>> Values
         {
             get { return _items.Values; }
@@ -136,7 +139,6 @@ namespace Ninject.Infrastructure
         /// Returns an enumerator that iterates through a the multimap.
         /// </summary>
         /// <returns>An <see cref="IEnumerator"/> object that can be used to iterate through the multimap.</returns>
-        [NotNull]
         public IEnumerator GetEnumerator()
         {
             return _items.GetEnumerator();

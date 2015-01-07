@@ -44,6 +44,7 @@ namespace Ninject.Planning.Bindings
         /// <summary>
         /// The names of the services added to the exceptions.
         /// </summary>
+        [CanBeNull]
         private readonly string serviceNames;
 
         /// <summary>
@@ -682,7 +683,7 @@ namespace Ninject.Planning.Bindings
             return this;
         }
 
-        private static bool DoesAnyAncestorMatch(IRequest request, Predicate<IContext> predicate)
+        private static bool DoesAnyAncestorMatch([NotNull] IRequest request, [NotNull] Predicate<IContext> predicate)
         {
             var parentContext = request.ParentContext;
             if (parentContext == null)

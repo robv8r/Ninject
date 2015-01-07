@@ -140,7 +140,6 @@ namespace Ninject.Syntax
         /// Registers the specified binding.
         /// </summary>
         /// <param name="binding">The binding to add.</param>
-        [NotNull]
         void AddBinding([NotNull] IBinding binding);
 
         /// <summary>

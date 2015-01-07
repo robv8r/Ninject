@@ -22,7 +22,7 @@ namespace Ninject.Components
         /// <summary>
         /// Gets or sets the settings.
         /// </summary>
-        [NotNull]
+        [CanBeNull]
         INinjectSettings Settings { get; set; }
     }
 }

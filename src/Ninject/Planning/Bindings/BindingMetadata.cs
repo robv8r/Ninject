@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Ninject.Infrastructure;
 #endregion
 
@@ -21,6 +22,7 @@ namespace Ninject.Planning.Bindings
     /// </summary>
     public class BindingMetadata : IBindingMetadata
     {
+        [NotNull]
         private readonly Dictionary<string, object> _values = new Dictionary<string, object>();
 
         /// <summary>

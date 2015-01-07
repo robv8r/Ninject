@@ -8,13 +8,14 @@ namespace Ninject.Infrastructure
     /// </summary>
     public abstract class BaseWeakReference
     {
+        [NotNull]
         private readonly WeakReference innerWeakReference;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ReferenceEqualWeakReference"/> class.
         /// </summary>
         /// <param name="target">The target.</param>
-        protected BaseWeakReference(object target)
+        protected BaseWeakReference([NotNull] object target)
         {
             this.innerWeakReference = new WeakReference(target);
         }
@@ -24,7 +25,7 @@ namespace Ninject.Infrastructure
         /// </summary>
         /// <param name="target">The target.</param>
         /// <param name="trackResurrection">if set to <c>true</c> [track resurrection].</param>
-        protected BaseWeakReference(object target, bool trackResurrection)
+        protected BaseWeakReference([NotNull] object target, bool trackResurrection)
         {
             this.innerWeakReference = new WeakReference(target, trackResurrection);
         }

@@ -30,6 +30,7 @@ namespace Ninject.Parameters
     /// </summary>
     public class WeakPropertyValue : Parameter, IPropertyValue
     {
+        [NotNull]
         private readonly WeakReference weakReference;
 
         /// <summary>

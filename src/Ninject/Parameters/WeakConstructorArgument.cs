@@ -35,6 +35,7 @@ namespace Ninject.Parameters
         /// <summary>
         /// A weak reference to the constructor argument value.
         /// </summary>
+        [NotNull]
         private readonly WeakReference weakReference;
 
         /// <summary>

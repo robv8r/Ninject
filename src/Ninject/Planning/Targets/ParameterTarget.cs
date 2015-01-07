@@ -21,6 +21,7 @@ namespace Ninject.Planning.Targets
     /// </summary>
     public class ParameterTarget : Target<ParameterInfo>
     {
+        [NotNull]
         private readonly Future<object> defaultValue;
 
         /// <summary>

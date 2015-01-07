@@ -30,7 +30,7 @@ namespace Ninject.Activation
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns>The created instance.</returns>
-        [NotNull]
+        [CanBeNull]
         object Create([NotNull] IContext context);
     }
 }

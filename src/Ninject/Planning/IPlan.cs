@@ -45,7 +45,7 @@ namespace Ninject.Planning
         /// </summary>
         /// <typeparam name="TDirective">The type of directive.</typeparam>
         /// <returns>The first directive, or <see langword="null"/> if no matching directives exist.</returns>
-        [NotNull]
+        [CanBeNull]
         TDirective GetOne<TDirective>() where TDirective : IDirective;
 
         /// <summary>

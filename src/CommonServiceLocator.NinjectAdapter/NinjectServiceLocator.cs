@@ -10,6 +10,7 @@
 #region Using Directives
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Microsoft.Practices.ServiceLocation;
 using Ninject;
 #endregion
@@ -18,14 +19,15 @@ namespace CommonServiceLocator.NinjectAdapter
 {
     public class NinjectServiceLocator : ServiceLocatorImplBase
     {
+        [NotNull]
         public IKernel Kernel { get; private set; }
 
-        public NinjectServiceLocator(IKernel kernel)
+        public NinjectServiceLocator([NotNull] IKernel kernel)
         {
             Kernel = kernel;
         }
 
-        protected override object DoGetInstance(Type serviceType, string key)
+        protected override object DoGetInstance([NotNull] Type serviceType, [CanBeNull] string key)
         {
             // key == null must be specifically handled as not asking for a specific keyed instance
             // http://commonservicelocator.codeplex.com/wikipage?title=API%20Reference&referringTitle=Home
@@ -39,7 +41,8 @@ namespace CommonServiceLocator.NinjectAdapter
             return Kernel.Get(serviceType, key);
         }
 
-        protected override IEnumerable<object> DoGetAllInstances(Type serviceType)
+        [NotNull]
+        protected override IEnumerable<object> DoGetAllInstances([NotNull] Type serviceType)
         {
             return Kernel.GetAll(serviceType);
         }

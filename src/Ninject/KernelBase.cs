@@ -38,10 +38,13 @@ namespace Ninject
         [NotNull]
         protected readonly object HandleMissingBindingLockObject = new object();        
         
+        [NotNull]
         private readonly Multimap<Type, IBinding> bindings = new Multimap<Type, IBinding>();
 
+        [NotNull]
         private readonly Multimap<Type, IBinding> bindingCache = new Multimap<Type, IBinding>();
 
+        [NotNull]
         private readonly Dictionary<string, INinjectModule> modules = new Dictionary<string, INinjectModule>();
 
         /// <summary>
@@ -484,7 +487,6 @@ namespace Ninject
         /// </summary>
         /// <param name="request">The request.</param>
         /// <returns><c>True</c> if the missing binding can be handled; otherwise <c>false</c>.</returns>
-        [NotNull]
         protected virtual bool HandleMissingBinding([NotNull] IRequest request)
         {
             Ensure.ArgumentNotNull(request, "request");

@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using JetBrains.Annotations;
 using Ninject.Infrastructure;
 using Ninject.Infrastructure.Disposal;
 using Ninject.Infrastructure.Introspection;
@@ -25,8 +26,11 @@ namespace Ninject.Components
     /// </summary>
     public class ComponentContainer : DisposableObject, IComponentContainer
     {
+        [NotNull]
         private readonly Multimap<Type, Type> _mappings = new Multimap<Type, Type>();
+        [NotNull]
         private readonly Dictionary<Type, INinjectComponent> _instances = new Dictionary<Type, INinjectComponent>();
+        [NotNull]
         private readonly HashSet<KeyValuePair<Type, Type>> transients = new HashSet<KeyValuePair<Type, Type>>();
 
         /// <summary>

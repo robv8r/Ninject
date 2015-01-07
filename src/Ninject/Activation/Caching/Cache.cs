@@ -28,6 +28,7 @@ namespace Ninject.Activation.Caching
         /// Contains all cached instances.
         /// This is a dictionary of scopes to a multimap for bindings to cache entries.
         /// </summary>
+        [NotNull]
         private readonly IDictionary<object, Multimap<IBindingConfiguration, CacheEntry>> entries =
             new Dictionary<object, Multimap<IBindingConfiguration, CacheEntry>>(new WeakReferenceEqualityComparer());
 
@@ -220,7 +221,8 @@ namespace Ninject.Activation.Caching
         /// </summary>
         /// <param name="bindings">The bindings.</param>
         /// <returns>All bindings of a binding.</returns>
-        private static IEnumerable<CacheEntry> GetAllBindingEntries(IEnumerable<KeyValuePair<IBindingConfiguration, ICollection<CacheEntry>>> bindings)
+        [NotNull]
+        private static IEnumerable<CacheEntry> GetAllBindingEntries([NotNull] IEnumerable<KeyValuePair<IBindingConfiguration, ICollection<CacheEntry>>> bindings)
         {
             return bindings.SelectMany(bindingEntries => bindingEntries.Value);
         }
@@ -229,6 +231,7 @@ namespace Ninject.Activation.Caching
         /// Gets all cache entries.
         /// </summary>
         /// <returns>Returns all cache entries.</returns>
+        [NotNull]
         private IEnumerable<CacheEntry> GetAllCacheEntries()
         {
             return this.entries.SelectMany(scopeCache => GetAllBindingEntries(scopeCache.Value));
@@ -238,7 +241,7 @@ namespace Ninject.Activation.Caching
         /// Forgets the specified cache entries.
         /// </summary>
         /// <param name="cacheEntries">The cache entries.</param>
-        private void Forget(IEnumerable<CacheEntry> cacheEntries)
+        private void Forget([NotNull] IEnumerable<CacheEntry> cacheEntries)
         {
             foreach (var entry in cacheEntries.ToList())
             {
@@ -250,7 +253,7 @@ namespace Ninject.Activation.Caching
         /// Forgets the specified entry.
         /// </summary>
         /// <param name="entry">The entry.</param>
-        private void Forget(CacheEntry entry)
+        private void Forget([NotNull] CacheEntry entry)
         {
             this.Clear(entry.Reference.Instance);
             this.Pipeline.Deactivate(entry.Context, entry.Reference);
@@ -266,7 +269,7 @@ namespace Ninject.Activation.Caching
             /// </summary>
             /// <param name="context">The context.</param>
             /// <param name="reference">The instance reference.</param>
-            public CacheEntry(IContext context, InstanceReference reference)
+            public CacheEntry([NotNull] IContext context, [NotNull] InstanceReference reference)
             {
                 this.Context = context;
                 this.Reference = reference;
@@ -276,12 +279,14 @@ namespace Ninject.Activation.Caching
             /// Gets the context of the instance.
             /// </summary>
             /// <value>The context.</value>
+            [NotNull]
             public IContext Context { get; private set; }
 
             /// <summary>
             /// Gets the instance reference.
             /// </summary>
             /// <value>The instance reference.</value>
+            [NotNull]
             public InstanceReference Reference { get; private set; }
         }
     }

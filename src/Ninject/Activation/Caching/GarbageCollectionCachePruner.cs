@@ -13,6 +13,7 @@ namespace Ninject.Activation.Caching
     using System;
     using System.Collections.Generic;
     using System.Threading;
+    using JetBrains.Annotations;
     using Ninject.Components;
     using Ninject.Infrastructure;
     using Ninject.Infrastructure.Language;
@@ -26,11 +27,13 @@ namespace Ninject.Activation.Caching
         /// <summary>
         /// indicator for if GC has been run.
         /// </summary>
+        [NotNull]
         private readonly WeakReference indicator = new WeakReference(new object());
         
         /// <summary>
         /// The caches that are being pruned.
         /// </summary>
+        [NotNull]
         private readonly List<IPruneable> caches = new List<IPruneable>();
 
         /// <summary>

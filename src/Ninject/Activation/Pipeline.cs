@@ -27,6 +27,7 @@ namespace Ninject.Activation
         /// <summary>
         /// The activation cache.
         /// </summary>
+        [NotNull]
         private readonly IActivationCache activationCache;
 
         /// <summary>

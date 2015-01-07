@@ -25,6 +25,7 @@ namespace Ninject
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading;
+    using JetBrains.Annotations;
 
     /// <summary>
     /// Allows to register kernel globally to perform some tasks on all kernels.
@@ -32,7 +33,9 @@ namespace Ninject
     /// </summary>
     public abstract class GlobalKernelRegistration
     {
+        [NotNull]
         private static readonly ReaderWriterLock kernelRegistrationsLock = new ReaderWriterLock();
+        [NotNull]
         private static readonly IDictionary<Type, Registration> kernelRegistrations = new Dictionary<Type, Registration>(); 
 
         internal static void RegisterKernelForType(IKernel kernel, Type type)

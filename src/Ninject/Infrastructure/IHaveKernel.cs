@@ -22,7 +22,7 @@ namespace Ninject.Infrastructure
         /// <summary>
         /// Gets the kernel.
         /// </summary>
-        [NotNull]
+        [CanBeNull]
         IKernel Kernel { get; }
     }
 }

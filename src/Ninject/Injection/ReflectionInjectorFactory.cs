@@ -26,7 +26,7 @@ namespace Ninject.Injection
         /// </summary>
         /// <param name="constructor">The constructor.</param>
         /// <returns>The created injector.</returns>
-        public ConstructorInjector Create([NotNull] ConstructorInfo constructor)
+        public ConstructorInjector Create(ConstructorInfo constructor)
         {
             return args => constructor.Invoke(args);
         }
@@ -36,7 +36,7 @@ namespace Ninject.Injection
         /// </summary>
         /// <param name="property">The property.</param>
         /// <returns>The created injector.</returns>
-        public PropertyInjector Create([NotNull] PropertyInfo property)
+        public PropertyInjector Create(PropertyInfo property)
         {
             return (target, value) => property.SetValue(target, value, null);
         }
@@ -46,7 +46,7 @@ namespace Ninject.Injection
         /// </summary>
         /// <param name="method">The method.</param>
         /// <returns>The created injector.</returns>
-        public MethodInjector Create([NotNull] MethodInfo method)
+        public MethodInjector Create(MethodInfo method)
         {
             return (target, args) => method.Invoke(target, args);
         }

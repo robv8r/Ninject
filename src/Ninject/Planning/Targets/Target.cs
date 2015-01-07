@@ -29,7 +29,9 @@ namespace Ninject.Planning.Targets
     public abstract class Target<T> : ITarget
         where T : ICustomAttributeProvider
     {
+        [NotNull]
         private readonly Future<Func<IBindingMetadata, bool>> _constraint;
+        [NotNull]
         private readonly Future<bool> _isOptional;
 
         /// <summary>
